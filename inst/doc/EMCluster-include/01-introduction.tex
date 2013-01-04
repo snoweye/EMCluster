@@ -1,0 +1,86 @@
+
+{\color{red} \bf Warning:} This document is written to explain the main
+functions of \pkg{EMCluster}~\citep{Chen2012EMClusterpackage}, version 0.2-0.
+Every effort will be made to ensure future versions are consistent with
+these instructions, but features in later versions may not be explained
+in this document.
+
+
+\section[Introduction]{Introduction}
+\label{sec:introduction}
+\addcontentsline{toc}{section}{\thesection. Introduction}
+
+We use this section to show how to install \pkg{EMCluster},
+introduce basic finite mixture Gaussian distribution,
+and notation for the corresponding \proglang{R} objects.
+In Section~\ref{sec:em_init}, we introduce EM algorithms and
+strategies of initialization for model-based clustering, and
+the major \proglang{R} functions are also introduced.
+In Section~\ref{sec:example}, we provide two
+examples for unsupervised and semi-supervised clusterings,
+and quick demos are shown.
+
+
+\subsection[Installation]{Installation}
+The \pkg{EMCluster} has simple interface of \proglang{R} to efficient
+\proglang{C} code that we optimize the algorithm and utilize \pkg{LAPACK}
+for matrix algebra. The package should install on most popular platform with
+further configureations. The installation can be done in the shell command
+as
+\begin{Command}
+> R CMD INSTALL EMCluster_0.2-0.tar.gz
+\end{Command}
+or from any R session as
+\begin{Command}
+R> install.packages("EMCluster") 
+\end{Command}
+with user-favored CRAN mirror site.
+
+
+\subsection[Notation]{Notation}
+The \pkg{EMCluster} assumes finite mixture Gaussian distribution with
+unstructured dispersion and implements EM algorithm for model-based clustering
+in both unsupervised and semi-supervised clusterings. The model is
+\begin{equation}
+f(\bx | \bvartheta) = \sum_{k = 1}^K \pi_k \phi(\bx | \bmu_k, \bSigma_k).
+\label{eqn:density_mvn}
+\end{equation}
+\begin{itemize}
+\item
+  $\bx$ is a $p$-dimensional observation.
+\item
+  $\bvartheta = \{\pi_1,\pi_2,\ldots,\pi_{K-1},\bmu_1,\bmu_2,\ldots,\bmu_K,
+    \bSigma_1,\bSigma_2,\ldots,\bSigma_K\}$.
+\item
+  $\pi_1,\pi_2,\ldots,\pi_K$ are mixing proportion for $K$ components that
+  $\sum_{k = 1}^K \pi_k = 1$ and $0 < \pi_k < 1$ for all $k=1,2,\ldots,K$.
+\item
+  $\phi(\bx|\bmu_k,\bSigma_k)$'s are multivariate Gaussian densities with mean
+  $\bmu_k$ and dispersion $\bSigma_k$.
+\item
+  $\bmu_1,\bmu_2,\ldots,\bmu_K$ are $p$-dimensional mean vectors and
+  $\bSigma_1,\bSigma_2,\ldots,\bSigma_K$ are $p\times p$-dimensional
+  dispersion matrices.
+\end{itemize}
+
+We also assume the following notation for \proglang{R} objects
+in \pkg{EMCluster}
+\begin{itemize}
+\item
+  \code{x} is a matrix with dimension $n\times p$
+  containing $n$ observations to be clustered.
+\item
+  \code{pi} is a vector with length $K$ containing $\pi_1,\pi_2,\ldots,\pi_K$.
+\item
+  \code{Mu} is a matrix with dimension $K\times p$ containing
+  $\bmu_1,\bmu_2,\ldots,\bmu_K$.
+\item
+  \code{LTSigma} is a matrix with dimension $K\times p(p+1)/2$ containing
+  low triangular matrices of $\bSigma_1,\bSigma_2,\ldots,\bSigma_K$.
+\item
+  \code{lab} is a vector with length $n$ containing labels of observations.
+  If \code{lab=NULL}, then unsupervised clustering is performed, otherwise
+  semi-supervised clustering is performed where labels can be
+  $1, 2,\ldots,K$ for cluster-known data and $0$ for cluster-unknown data.
+\end{itemize}
+

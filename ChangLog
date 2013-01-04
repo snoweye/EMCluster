@@ -1,0 +1,115 @@
+2012-12-23: Ver. 0.2-2
+  * Fix .Last.load problem.
+
+2012-12-06: Ver. 0.2-1
+  * Fix authorship typos.
+
+2012-12-05: Ver. 0.2-0
+  * Add man, vignette, and all required files for CRAN.
+
+======================= Log for C Code =====================================
+* All Dr. Maitra's codes are kept in the original files and names.
+* Some original functions are modified inside the original files
+  with same function names.
+* Some extra functions are extended and saved separately.
+* All generic functions are stored in files with function's name and
+  aheaded with "M_".
+* All R call function are stored in files with function's name and
+  aheaded with "R_".
+* All semi-supervised clustering are stored in files with function's name and
+  adheaded with "ss_".
+* Header files "mb_tool.h" and "ss_mb_tool.h" collect major functions except
+  files and functions aheaded with "R_".
+* All functions with counting iterations and times in files with function's
+  name and adheaded with "it_".
+
+Modifiled: Wei-Chen Chen on 2009/04/27.
+
+
+======================= Log Before Release =====================================
+2010-05-07: Ver. 0.1-18
+  * Add checks in decreasing logL.
+
+2009-08-18: Ver. 0.1-17
+  * Add adapted candidated initializations.
+
+2009-06-17: Ver. 0.1-16
+  * Rewrite EM step to ME step.
+
+2009-06-09: Ver. 0.1-15
+  * Add clock ticks.
+  * Rewrite emobj in C structure.
+
+2009-03-17: Ver. 0.1-14
+  * Fix possible bugs in semi-supervise clustering methods.
+
+2009-03-15: Ver. 0.1-13
+  * Add all semi-supervise clustering methods.
+
+2009-03-08: Ver. 0.1-12
+  * Modify model-based randomEMinit() for original methods.
+
+2009-02-16: Ver. 0.1-11
+  * Add model-based initializer in C.
+  * Add rand.EM and rand.em.EM methods.
+  * Simplify model-based initializer in C and fix bugs.
+
+2009-01-19: Ver. 0.1-10
+  * Add shortemcluster().
+  * RRand requires long integers for 64-bit machine.
+  * Fix a convergence condition of shortemcluster() in C.
+  * Modified estep() in C.
+  * Add myiris data set with test and plot.md() in R.
+
+2009-01-11: Ver. 0.1-9
+  * Add controls for stable solutions in em.EM().
+
+2008-12-03: Ver. 0.1-8
+  * Fix a bug for likelihood calculations for 1 cluster.
+  * Fix a bug for determine() using call by address that change the values
+    of input parameters.
+  * Fix more bugs in "src/initials.c" for MLE and MME of ltsigma.
+
+2008-11-16: Ver. 0.1-7
+  * Add sequential boosting methods.
+
+2008-10-29: Ver. 0.1-6
+  * Add logL(), dmixmvn(), dlmvn() in "R/" and "R_dlmvnorm.c" in "src/".
+  * Add all functions with wt version to ignore transposing matrix.
+  * Fix a bug in e.step() in "R/".
+  * Add GetRNGstate() and PutRNGstate() in "src/srswor.c".
+  * Add all test functions in "test/" to test wt and wot version.
+
+2008-10-27: Ver. 0.1-5
+  * Change estep() to e.step(), mstep to m.step() in "R/".
+  * Create RRand() in "R/".
+
+2008-10-20: Ver. 0.1-4
+  * In "src/", add "R_estep.c", "R_mstep.c".
+  * In "R/", add "fcn_estep.r", "fcn_mstep.r".
+  * In "demo/" , add "testemstep.r".
+
+2008-10-14: Ver. 0.1-3
+  * In "src/", add "M_emgroup.c", "M_init_other.c", "R_M_emgroup.c",
+    "R_M_init_other.c", "R_emcluster.c", and "R_initials.c".
+  * In "R/", add "fcn_init_other.c", "fcn_initials.r", "fcn_plot2d.r",
+    "fcn_summary.r", and modify all other files.
+  * In "demo/", add "test_init.r".
+  * In "data/", add "control.r", "da2.rda", and "da3.rda".
+
+2008-10-06: Ver. 0.1-2
+  * Add "src/R_tool.c".
+  * Add "R_emgroup()" in "src/R_emgroup.c" to call "emgroup()"
+    in "src/emgroup.c".
+  * Add "R_starts_via_svd()" in "src/R_init_svd.c" to call
+    "starts_via_svd()" in "src/init_svd.c".
+  * Add "R/fcnmy.r".
+  * Add "emgroup()" in "R/fcn_emgroup.r" to call "R_emgroup()"
+    in "src/R_emgroup.c".
+  * Add "starts_via_svd()" in "R/fcn_init_svd.r" to call "R_starts_via_svd()"
+    in "src/R_init_svd.c".
+  * Add "demo/test_emgroup.r" and "demo/test_starts_via_svd.r".
+  * Add "data/da1.rda".
+
+2008-09-24: Ver. 0.1-1
+  * Initial the package "EMCluster".

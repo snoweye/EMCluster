@@ -1,0 +1,73 @@
+
+\section[EM Algorithm and Initialization]{EM Algorithm and Initialization}
+\label{sec:em_init}
+\addcontentsline{toc}{section}{\thesection. EM Algorithm and Initialization}
+
+For $n$ observations $\bX = \{\bx_1,\bx_2,\ldots,\bx_n\}$, the log
+likelihood based on the Equation~(\ref{eqn:density_mvn}) is
+\begin{equation}
+\log L(\bvartheta | \bX) = \log
+\left(
+\prod_{i=1}^n f(\bx_i | \bvartheta)
+\right).
+\label{eqn:logL}
+\end{equation}
+A standard way to optimize the Equation~(\ref{eqn:logL}) is to utilize
+the EM algorithm~\citep{Dempster1977} composed of
+expectation (E-) and maximization (M-) steps.
+
+The \proglang{R} function \code{emcluster} implements the algorithm to find
+the maximum likelihood estimates (MLEs) $\hat{\bvartheta}$.
+The \proglang{R} functions \code{e.step} and \code{m.step} implements the
+both steps, respectively, which are useful for advanced developers.
+
+Model-based clustering partition data into $K$ clusters
+by the maximum posterior
+$$
+\argmax_{k} \hat{\pi}_k \phi(\bx_i | \hat{\bmu}_k, \hat{\bSigma}_k)
+$$
+for each observation.
+The \proglang{R} function \code{assign.class} provides this procedure
+returning cluster id ($1,2,\ldots,K$) for each $\bx_i$.
+
+
+The initialization is an solution of avoiding local optimization
+when applying the EM algorithm to cluster high-dimensional data.
+The local optimization problem is more servious when data contain high
+overlaps of clusters. There are three initialization methods
+implemented in \pkg{EMCluster}:
+{\it RndEM}~\citep{maitra09},
+{\it emEM}~\citep{biernackietal03}, and
+{\it svd}~\citep{maitra01}.
+The \proglang{R} functions are
+\begin{itemize}
+\item
+  \code{init.EM} calls \code{rand.EM} and
+  \code{em.EM} and implements for {\it RndEM} and {\it emEM} methods,
+  respectively, and
+\item
+  \code{emgroup} implements the {\it svd} method.
+\end{itemize}
+The short summary of the initialization methods is
+\begin{itemize}
+\item {\it RndEM} repeats \code{.EMC$short.iter} times of randomly selecting
+$K$ centers from data and group all other data to the closest center
+based on Euclidean distance. Pick the best initial
+in terms of the highest log likelihood. Then, start EM algorithm from
+the best initial until convergence.
+
+\item {\it emEM} is composed of short-EM and long-EM steps.
+The short-EM step starts with randomly selecting $K$ centers and applies
+EM iterations until convergence with loose tolerance \code{.EMC$short.eps}.
+Repeat a few time until the total
+EM iterations reach \code{.EMC$short.iter}. Then, start long-EM algorithm from
+the best initial until convergence with tight tolerance \code{.EMC$EM.eps}.
+
+\item {\it svd} utilizes singular value decomposition to decomposition
+data, and select centers from the major component space determining by
+the singular values. The data are grouped to the centers by kmeans
+to generate an initial. Then, start EM algorithm from the initial
+until convergence.
+
+\end{itemize}
+

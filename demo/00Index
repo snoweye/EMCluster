@@ -1,0 +1,8 @@
+allinit		EMCluster	Test all initialization method.
+allinit_ss	EMCluster	Test for semi-supervised clustering.
+emcluster	EMCluster	Test emclust() with emgroup().
+emstep		EMCluster	Test e.step() and m.step().
+myiris		EMCluster	Test iris data set.
+shortem		EMCluster	Test shortemcluster().
+starts_via_svd	EMCluster	Test a function starts.via.svd().
+RRand		EMCluster	Test RRand().

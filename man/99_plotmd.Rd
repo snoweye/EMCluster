@@ -25,8 +25,8 @@ plotmd(x, class = NULL, xlab = "Variables", ylab = "Data", ...)
   \url{http://maitra.public.iastate.edu/}
 }
 \author{
-  Wei-Chen Chen \email{wccsnow@gmail.com}, Volodymyr Melnykov, and
-  Ranjan Maitra.
+  Wei-Chen Chen \email{wccsnow@gmail.com}, Ranjan Maitra, and
+  Volodymyr Melnykov.
 }
 \seealso{
   \code{\link{init.EM}}, \code{\link{emcluster}}.

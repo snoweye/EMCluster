@@ -48,8 +48,8 @@ logL(x, emobj = NULL, pi = NULL, Mu = NULL, LTSigma = NULL)
   \url{http://maitra.public.iastate.edu/}
 }
 \author{
-  Wei-Chen Chen \email{wccsnow@gmail.com}, Volodymyr Melnykov, and
-  Ranjan Maitra.
+  Wei-Chen Chen \email{wccsnow@gmail.com}, Ranjan Maitra, and
+  Volodymyr Melnykov.
 }
 \seealso{
   \code{\link{init.EM}}, \code{\link{emcluster}}.

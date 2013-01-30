@@ -2,7 +2,7 @@ citHeader("To cite EMCluster in a publication use:")
 
 citEntry(
   entry = "Misc",
-  title = "EMCluster: {EM} Algorithm for Model-Based Clustering of Finite Mixture Gaussian Distribution",
+  title = "{EMCluster}: {EM} Algorithm for Model-Based Clustering of Finite Mixture Gaussian Distribution",
   author = personList(as.person("Wei-Chen Chen"),
                       as.person("Ranjan Maitra"),
                       as.person("Volodymyr Melnykov")),
@@ -14,7 +14,7 @@ citEntry(
 
 citEntry(
   entry = "Manual",
-  title = "A Quick Guid for the EMCluster Package",
+  title = "A Quick Guid for the {EMCluster} Package",
   author = personList(as.person("Wei-Chen Chen"),
                       as.person("Ranjan Maitra"),
                       as.person("Volodymyr Melnykov")),

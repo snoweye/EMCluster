@@ -17,15 +17,15 @@ In Section~\ref{sec:em_init}, we introduce EM algorithms and
 strategies of initialization for model-based clustering, and
 the major \proglang{R} functions are also introduced.
 In Section~\ref{sec:example}, we provide two
-examples for unsupervised and semi-supervised clusterings,
+examples for unsupervised and semi-supervised clustering,
 and quick demos are shown.
 
 
 \subsection[Installation]{Installation}
 The \pkg{EMCluster} has simple interface of \proglang{R} to efficient
 \proglang{C} code that we optimize the algorithm and utilize \pkg{LAPACK}
-for matrix algebra. The package should install on most popular platform with
-further configureations. The installation can be done in the shell command
+for matrix algebra. The package should install on most popular platform without
+further configurations. The installation can be done in the shell command
 as
 \begin{Command}
 > R CMD INSTALL EMCluster_0.2-0.tar.gz
@@ -40,7 +40,7 @@ with user-favored CRAN mirror site.
 \subsection[Notation]{Notation}
 The \pkg{EMCluster} assumes finite mixture Gaussian distribution with
 unstructured dispersion and implements EM algorithm for model-based clustering
-in both unsupervised and semi-supervised clusterings. The model is
+in both unsupervised and semi-supervised clustering. The model is
 \begin{equation}
 f(\bx | \bvartheta) = \sum_{k = 1}^K \pi_k \phi(\bx | \bmu_k, \bSigma_k).
 \label{eqn:density_mvn}

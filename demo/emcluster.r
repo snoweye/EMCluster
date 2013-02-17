@@ -5,7 +5,7 @@ x2 <- da2$da
 ret2.g <- emgroup(x2, nclass = 5)
 ret2.gs <- summary(ret2.g)
 
-emobj <- fast.init(x2, nclass = 5)
+emobj <- simple.init(x2, nclass = 5)
 ret2.f <- emcluster(x2, emobj, assign.class = TRUE)
 ret2.fs <- summary(ret2.f)
 
@@ -13,7 +13,7 @@ x3 <- da3$da
 ret3.g <- emgroup(x3, nclass = 5)
 ret3.gs <- summary(ret3.g)
 
-emobj <- fast.init(x3, nclass = 5)
+emobj <- simple.init(x3, nclass = 5)
 ret3.f <- emcluster(x3, emobj, assign.class = TRUE)
 ret3.fs <- summary(ret3.f)
 

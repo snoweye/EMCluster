@@ -7,7 +7,7 @@
   EMCluster provides EM algorithms and several efficient
   initialization methods for model-based clustering of finite
   mixture Gaussian distribution with unstructured dispersion
-  in both of unsupervised and semi-supervised clusterings.
+  in both of unsupervised and semi-supervised clustering.
 }
 \details{
 \tabular{ll}{

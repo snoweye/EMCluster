@@ -45,7 +45,7 @@ int quantile(int n,double *x,double *p,double *q, int numqs)
   qsort(sorted,n,sizeof(double),CompareDouble);
   
   for (i=0;i<numqs;i++) {
-    modul=floor(p[i]*(n-1));
+    modul=(int)floor(p[i]*(n-1));
     resid=p[i]*(n-1)-modul;
     if (resid==0)    q[i]=sorted[modul];
     else  q[i]=resid*sorted[modul+1]+(1-resid)*sorted[modul];
@@ -69,7 +69,7 @@ double trimmed_mean(int n,double *x,double left,double right)
 
   qsort(sorted,n,sizeof(double),CompareDouble);
   
-  for (i=left*n;i<right*n;i++) {
+  for (i=(int)left*n;i<(int)right*n;i++) {
     sum+=sorted[i];
     nx++;
   }

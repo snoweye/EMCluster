@@ -44,7 +44,7 @@ int srswor(int n, int k, int *y)
 GetRNGstate();
 
 		for (i = 0; i < k; i++) {
-			j = n * runif(0, 1);
+			j = (int) n * runif(0, 1);
 			y[i] = x[j];
 			x[j] = x[--n];
 		}

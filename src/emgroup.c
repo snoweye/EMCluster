@@ -31,7 +31,7 @@ int emgroup(double **x,int n,int p,int nclass,double *pi,double **Mu,
 	     double **LTSigma,double *llhdval,int *nc,int *class)
 {
   int j,flag=0;
-  double like;
+  double like=0.0;
   
   if (nclass==1) {
     nc[nclass-1]=n;

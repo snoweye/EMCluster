@@ -99,7 +99,7 @@ int starts_in_svd_domain(int n,int m,double **y,int nclus,int dmin,double *D,
 
   MAKE_VECTOR(ncl,dmin);
   i=(int)ceil(pow((m-dmin+1)*nclus,1.0/dmin));
-  for(j=0;j<dmin;j++) ncl[j]=i*round(D[j]/D[dmin-1]);
+  for(j=0;j<dmin;j++) ncl[j]=(int)i*round(D[j]/D[dmin-1]);
   for(j=0;j<dmin;j++) {
     totcl*=ncl[j];
     sumcl+=ncl[j];

@@ -11,7 +11,7 @@ int M_emgroup(double **x,int n,int p,int nclass,double *pi,double **Mu,
     double **LTSigma,double *llhdval,int *nc,int *class,
     double alpha, int em_iter, double em_eps){
   int j,flag=0;
-  double like;
+  double like=0.0;
   
   if (nclass==1) {
     nc[0]=n;

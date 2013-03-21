@@ -1,5 +1,6 @@
 2013-01-30: Ver. 0.2-3
   * Fix man page authorship typos.
+  * Fix uninitialed variables problem.
 
 2012-12-23: Ver. 0.2-2
   * Fix .Last.load problem.

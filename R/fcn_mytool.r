@@ -34,7 +34,9 @@ LTSigma2variance <- function(x){
   ret 
 }
 variance2LTSigma <- function(x){
-  t(apply(x, 3, var2LTsigma))
+  ret <- apply(x, 3, var2LTsigma)
+  ret <- matrix(ret, nrow = dim(x)[3], byrow = TRUE)
+  ret
 }
 
 

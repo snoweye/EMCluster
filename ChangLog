@@ -1,3 +1,7 @@
+2013-07-02: Ver. 0.2-4
+  * Fix variance2LTSigma for 1 dimension case.
+  * Move vignettes.
+
 2013-01-30: Ver. 0.2-3
   * Fix man page authorship typos.
   * Fix uninitialed variables problem.

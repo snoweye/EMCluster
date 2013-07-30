@@ -1,5 +1,6 @@
 \name{EMCluster-package}
 \alias{EMCluster-package}
+\alias{EMCluster}
 \docType{package}
 \title{EM Algorithm for Model-Based Clustering of Finite Mixture Gaussian
        Distribution}

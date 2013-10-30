@@ -38,6 +38,7 @@
 \alias{print.RRandret}
 \alias{print.summary.emret}
 \alias{summary.emret.wt}
+\alias{color.class}
 \title{ All Internal Functions of EMCluster }
 \description{
   All internal functions are for testing and can be utilized by

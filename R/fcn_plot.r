@@ -14,15 +14,11 @@ plotmd <- function(x, class = NULL, xlab = "Variables", ylab = "Data", ...){
 #    color.my <- c("#00EEEEFF", "#A0EEEEFF", "#AAC6EEFF", "#EEC6BBFF",
 #                  "#EE66EEFF", "#DEAA00FF", "#EECF5EFF", "grey65", "grey80",
 #                  "#60FF00FF", "#C9FF00FF")
-    tmp <- list(...)
-    if(is.null(tmp$col)){
-      color.my <- c("#00EEEEFF", "#AAC6EEFF", "#EE66EEFF", "#EEC6BBFF", "grey65",
-                    "#60FF00FF", "#A0EEEEFF", "#EECF5EFF", "grey80", "#DEAA00FF",
-                    "#C9FF00FF")
-      color <- color.my[class %% length(color.my) + 1]
-    } else{
-      color <- tmp$col[class %% length(tmp$col) + 1]
-    }
+    # color.my <- c("#00EEEEFF", "#AAC6EEFF", "#EE66EEFF", "#EEC6BBFF",
+    #               "grey65", "#60FF00FF", "#A0EEEEFF", "#EECF5EFF", "grey80",
+    #               "#DEAA00FF", "#C9FF00FF")
+    color.my <- color.class
+    color <- color.my[class %% length(color.my) + 1]
 
     tmp <- apply(cbind(color, x), 1,
                  function(y) lines(list(x = x.a, y = y[-1]), col = y[1]))

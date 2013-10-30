@@ -52,9 +52,11 @@ plotpt <- function(x, color.pch = 1, ...){
 #  color.my <- c("#00EEEEFF", "#A0EEEEFF", "#AAC6EEFF", "#EEC6BBFF",
 #                "#EE66EEFF", "#DEAA00FF", "#EECF5EFF", "grey65", "grey80",
 #                "#60FF00FF", "#C9FF00FF")
-  color.my <- c("#00EEEEFF", "#AAC6EEFF", "#EE66EEFF", "#EEC6BBFF", "grey65",
-                "#60FF00FF", "#A0EEEEFF", "#EECF5EFF", "grey80", "#DEAA00FF",
-                "#C9FF00FF")
+  # color.my <- c("#00EEEEFF", "#AAC6EEFF", "#EE66EEFF", "#EEC6BBFF",
+  #               "grey65", "#60FF00FF", "#A0EEEEFF", "#EECF5EFF", "grey80",
+  #               "#DEAA00FF", "#C9FF00FF")
+  color.my <- color.class
+
   pch.my <- 0:14
   n.pch <- length(pch.my)
   n.color <- length(color.my)

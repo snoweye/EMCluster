@@ -66,7 +66,7 @@
 }
 \examples{
 \dontrun{
-library(EMCluster, quiet = TRUE)
+library(EMCluster, quietly = TRUE)
 
 .EMC <- .EMControl()
 .EMC.Rnd <- .EMControl(short.eps = Inf)

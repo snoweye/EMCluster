@@ -56,7 +56,7 @@ logL(x, emobj = NULL, pi = NULL, Mu = NULL, LTSigma = NULL)
 }
 \examples{
 \dontrun{
-library(EMCluster, quiet = TRUE)
+library(EMCluster, quietly = TRUE)
 x2 <- da2$da
 x3 <- da3$da
 

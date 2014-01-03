@@ -57,7 +57,7 @@ Gamma2class(Gamma)
 }
 \examples{
 \dontrun{
-library(EMCluster, quiet = TRUE)
+library(EMCluster, quietly = TRUE)
 x <- da2$LTSigma
 class <- da2$class
 

@@ -15,3 +15,5 @@ S3method(print, RRandret)
 S3method(print, initret)
 S3method(print, svd)
 S3method(summary, svd.wt)
+
+S3method(print, lmt)

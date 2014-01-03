@@ -79,7 +79,7 @@ exhaust.EM(x, nclass = 1, lab = NULL,
 }
 \examples{
 \dontrun{
-library(EMCluster, quiet = TRUE)
+library(EMCluster, quietly = TRUE)
 set.seed(1234)
 x <- da1$da
 

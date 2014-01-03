@@ -52,7 +52,7 @@ m.step(x, emobj = NULL, Gamma = NULL, assign.class = FALSE)
 }
 \examples{
 \dontrun{
-library(EMCluster, quiet = TRUE)
+library(EMCluster, quietly = TRUE)
 x2 <- da2$da
 
 emobj <- list(pi = da2$pi, Mu = da2$Mu, LTSigma = da2$LTSigma)

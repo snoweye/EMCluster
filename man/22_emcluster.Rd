@@ -67,7 +67,7 @@ simple.init(x, nclass = 1)
 }
 \examples{
 \dontrun{
-library(EMCluster, quiet = TRUE)
+library(EMCluster, quietly = TRUE)
 set.seed(1234)
 x1 <- da1$da
 

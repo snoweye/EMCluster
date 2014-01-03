@@ -38,7 +38,7 @@ emgroup(x, nclass = 1, EMC = .EMC)
 }
 \examples{
 \dontrun{
-library(EMCluster, quiet = TRUE)
+library(EMCluster, quietly = TRUE)
 set.seed(1234)
 x1 <- da1$da
 

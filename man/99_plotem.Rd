@@ -43,7 +43,7 @@ plot2d(x, emobj = NULL, k = NULL, color.pch = 1,
 }
 \examples{
 \dontrun{
-library(EMCluster, quiet = TRUE)
+library(EMCluster, quietly = TRUE)
 x1 <- da1$da
 
 ret.1 <- starts.via.svd(x1, nclass = 10, method = "em")

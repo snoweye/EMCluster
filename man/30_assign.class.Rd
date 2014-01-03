@@ -48,7 +48,7 @@
 }
 \examples{
 \dontrun{
-library(EMCluster, quiet = TRUE)
+library(EMCluster, quietly = TRUE)
 set.seed(1234)
 x2 <- da2$da
 

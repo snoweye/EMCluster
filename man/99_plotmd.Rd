@@ -33,7 +33,7 @@ plotmd(x, class = NULL, xlab = "Variables", ylab = "Data", ...)
 }
 \examples{
 \dontrun{
-library(EMCluster, quiet = TRUE)
+library(EMCluster, quietly = TRUE)
 set.seed(1234)
 
 x <- myiris

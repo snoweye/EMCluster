@@ -8,7 +8,7 @@ Authors@R: c(person("Wei-Chen", "Chen", role = c("aut", "cre"), email =
         person("Ranjan", "Maitra", role = "aut"),
         person("Volodymyr", "Melnykov", role = "aut"))
 Depends: R (>= 2.14.0), MASS
-Enhances: PPtree, RColorBrewer
+Enhances: PPtree, RColorBrewer, pbdMPI, pmclust
 LazyLoad: yes
 LazyData: yes
 Description: EMCluster provides EM algorithms and several efficient
@@ -17,7 +17,7 @@ Description: EMCluster provides EM algorithms and several efficient
         in both of unsupervised and semi-supervised learning.
 License: GPL (>= 2)
 URL: http://maitra.public.iastate.edu/
-Packaged: 2014-01-03 06:37:34 UTC; snoweye
+Packaged: 2014-01-10 05:23:47 UTC; snoweye
 Author: Wei-Chen Chen [aut, cre],
   Ranjan Maitra [aut],
   Volodymyr Melnykov [aut]

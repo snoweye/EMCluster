@@ -17,7 +17,7 @@ Description: EMCluster provides EM algorithms and several efficient
         in both of unsupervised and semi-supervised learning.
 License: GPL (>= 2)
 URL: http://maitra.public.iastate.edu/
-Packaged: 2014-01-10 05:23:47 UTC; snoweye
+Packaged: 2014-01-14 02:01:42 UTC; snoweye
 Author: Wei-Chen Chen [aut, cre],
   Ranjan Maitra [aut],
   Volodymyr Melnykov [aut]

@@ -7,8 +7,8 @@
   algorithms, such as \code{\link{project.on.2d}()}.
 }
 \usage{
-plotppcontour(da, Pi, Mu, S, class, n.grid = 128, angle = 0,
-    xlab = "", ylab = "", main = "")
+plotppcontour(da, Pi, Mu, S, class, class.true = NULL, n.grid = 128,
+    angle = 0, xlab = "", ylab = "", main = "")
 }
 \arguments{
   \item{da}{a projected data matrix, dimension \eqn{n\times 2}{n * 2}.}
@@ -17,6 +17,7 @@ plotppcontour(da, Pi, Mu, S, class, n.grid = 128, angle = 0,
   \item{S}{projected matrices of dispersion, dimension
            \eqn{p\times p \times K}{2 * 2 * K}.}
   \item{class}{id of classifications, length \eqn{n}{n}.}
+  \item{class.true}{ture id of classifications if available, length \eqn{n}{n}.}
   \item{n.grid}{number of grid points.}
   \item{angle}{a rotation angle (\eqn{0}{0} to \eqn{2\pi}{2 pi}).}
   \item{xlab}{an option for \code{plot()} function.}

@@ -25,56 +25,72 @@ fill.ppcontour <- function(z,
     y = seq(0, 1, length.out = ncol(z[,, 1])),
     power = 0.4, xlab = "", ylab = "", main = ""){
 
-  plot(NULL, NULL, xlab = xlab, ylab = ylab, main = main,
-       xlim = range(x), ylim = range(y), axes = FALSE)
+  x.lim <- range(x)
+  y.lim <- range(y)
+  x.lim <- x.lim + c(0.02, -0.02) * (x.lim[2] - x.lim[1])
+  y.lim <- y.lim + c(0.02, -0.02) * (y.lim[2] - y.lim[1])
+
+  plot(NULL, NULL, xlab = "", ylab = "", main = "",
+       xlim = x.lim, ylim = y.lim, axes = FALSE)
+
   for(i.k in 1:dim(z)[3]){
     image(x, y, z[,, i.k]^power,
           col = col.ppcontour$fill[[(i.k - 1) %% 7 + 1]](),
           add = TRUE)
   }
-  #for(i.k in 1:dim(z)[3]){
-  #  contour(x, y, z[,, i.k]^power, nlevels = 5,
-  #          drawlabels = FALSE,
-  #          # col = col.ppcontour$line[[(i.k - 1) %% 7 + 1]],
-  #          col = rgb(255, 255, 255, 50, maxColorValue = 255),
-  #          lwd = 0.2, add = TRUE)
-  #}
-  zz <- z[,, 1]
-  for(i.k in 2:dim(z)[3]){
-    zz <- zz + z[,, i.k]
+
+  for(i.k in 1:dim(z)[3]){
+    contour(x, y, z[,, i.k]^power, nlevels = 5,
+            drawlabels = FALSE,
+            # col = col.ppcontour$line[[(i.k - 1) %% 7 + 1]],
+            col = rgb(255, 255, 255, 50, maxColorValue = 255),
+            lwd = 0.2, add = TRUE)
   }
-  contour(x, y, zz^power, nlevels = 10,
-          drawlabels = FALSE,
-          # col = col.ppcontour$line[[(i.k - 1) %% 7 + 1]],
-          col = rgb(255, 255, 255, 100, maxColorValue = 255),
-          lwd = 0.5, add = TRUE)
+
+  ### Merged contours.
+  # zz <- z[,, 1]
+  # for(i.k in 2:dim(z)[3]){
+  #   zz <- zz + z[,, i.k]
+  # }
+  # contour(x, y, zz^power, nlevels = 10,
+  #         drawlabels = FALSE,
+  #         # col = col.ppcontour$line[[(i.k - 1) %% 7 + 1]],
+  #         col = rgb(255, 255, 255, 100, maxColorValue = 255),
+  #         lwd = 0.5, add = TRUE)
+
   box()
-  axis(1)
-  axis(2)
+  # axis(1)
+  # axis(2)
 
   invisible()
 } # End of fill.ppcontour().
 
-fill.pppoints <- function(da, class){
+fill.pppoints <- function(da, class, class.true){
   for(i.k in 1:length(unique(class))){
     da.tmp <- da[class == i.k,]
+    class.true.tmp <- class.true[class == i.k]
     points(da.tmp[, 1], da.tmp[, 2],
            col = col.ppcontour$point[[(i.k - 1) %% 7 + 1]],
-           pch = col.ppcontour$symbol[[(i.k - 1) %% 7 + 1]],
-           cex = 0.7)
+           pch = col.ppcontour$symbol[(class.true.tmp - 1) %% 7 + 1],
+           cex = 0.9)
   }
 } # End of fill.pppoints().
 
 fill.ppmu <- function(Mu){
   for(i.k in 1:nrow(Mu)){
-    points(Mu[i.k, 1], Mu[i.k, 2], col = 1,
-           pch = col.ppcontour$symbol[[(i.k - 1) %% 7 + 1]],
-           cex = 1.1)
+    points(Mu[i.k, 1], Mu[i.k, 2],
+           pch = "x",
+           col = rgb(255, 255, 255, maxColorValue = 255),
+           cex = 1.2)
   }
 } # End of fill.ppmu().
 
-plotppcontour <- function(da, Pi, Mu, S, class, n.grid = 128, angle = 0,
-    xlab = "", ylab = "", main = ""){
+plotppcontour <- function(da, Pi, Mu, S, class, class.true = NULL,
+    n.grid = 128, angle = 0, xlab = "", ylab = "", main = ""){
+  if(is.null(class.true)){
+    class.true <- class
+  }
+
   # Rotate plot if needed.
   rotation <- matrix(c(cos(angle), sin(angle), -sin(angle), cos(angle)),
                      nrow = 2, byrow = TRUE)
@@ -115,7 +131,7 @@ plotppcontour <- function(da, Pi, Mu, S, class, n.grid = 128, angle = 0,
 
   fill.ppcontour(z, x = grid.x, y = grid.y,
                  xlab = xlab, ylab = ylab, main = main)
-  fill.pppoints(da, class)
+  fill.pppoints(da, class, class.true)
   fill.ppmu(Mu)
 
   invisible()

@@ -9,6 +9,7 @@ ret.proj <- project.on.2d(x, ret)
 
 ### Plot.
 pdf("crabs_ppcontour.pdf", height = 5, width = 5)
+par(mar = rep(0.1, 4))
 plotppcontour(ret.proj$da, ret.proj$Pi, ret.proj$Mu, ret.proj$S,
               ret.proj$class, angle = pi/6, main = "Crabs K = 4")
 dev.off()

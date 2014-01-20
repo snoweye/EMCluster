@@ -10,7 +10,7 @@ load("./data/simu.RndEM.rda")
 x <- da$X
 
 da.s.all <- list()
-for(k0 in 2:6){
+for(k0 in 2:7){
   emobj <- ret.save[[k0]]
   da.s <- list(pi = emobj$pi,
                Mu = emobj$Mu,

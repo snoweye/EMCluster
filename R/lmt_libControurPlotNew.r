@@ -40,7 +40,7 @@ fill.ppcontour <- function(z,
   }
 
   for(i.k in 1:dim(z)[3]){
-    contour(x, y, z[,, i.k]^power, nlevels = 5,
+    contour(x, y, z[,, i.k]^power, nlevels = 10,
             drawlabels = FALSE,
             # col = col.ppcontour$line[[(i.k - 1) %% 7 + 1]],
             col = rgb(255, 255, 255, 50, maxColorValue = 255),
@@ -72,7 +72,7 @@ fill.pppoints <- function(da, class, class.true){
     points(da.tmp[, 1], da.tmp[, 2],
            col = col.ppcontour$point[[(i.k - 1) %% 7 + 1]],
            pch = col.ppcontour$symbol[(class.true.tmp - 1) %% 7 + 1],
-           cex = 0.9)
+           cex = 2.0)
   }
 } # End of fill.pppoints().
 
@@ -81,7 +81,7 @@ fill.ppmu <- function(Mu){
     points(Mu[i.k, 1], Mu[i.k, 2],
            pch = "x",
            col = rgb(255, 255, 255, maxColorValue = 255),
-           cex = 1.2)
+           cex = 2.0)
   }
 } # End of fill.ppmu().
 

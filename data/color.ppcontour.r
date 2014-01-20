@@ -8,6 +8,8 @@ col.ppcontour <- list(
                vi = rgb(118,  23, 206, maxColorValue = 255),
                aq = rgb( 49, 119,  96, maxColorValue = 255)
               ),
+  # symbol = c(8, 21, 17, 15, 3, 4, 5),
+  # symbol = c(0, 1, 2, 15, 16, 17, 18),
   symbol = c("1", "2", "3", "4", "5", "6", "7"),
   line = list(trre = rgb(175,   0,   0, 50, maxColorValue = 255),
               trgr = rgb(  0, 150,   0, 50, maxColorValue = 255),
@@ -40,7 +42,7 @@ col.ppcontour <- list(
               trViolet = function(k = 64){
                            s <- seq(0, 200, length.out = k)
                            rgb(138, 43, 226, s, maxColorValue = 255)
-                         },
+                        },
               trAqua = function(k = 64){
                          s <- seq(0, 200, length.out = k)
                          rgb(69, 139, 116, s, maxColorValue = 255)

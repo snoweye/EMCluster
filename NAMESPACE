@@ -1,5 +1,7 @@
 useDynLib(EMCluster)
 
+import(MASS)
+
 exportPattern("^[[:alpha:]]+")
 # exportPattern("^[\\.]")
 

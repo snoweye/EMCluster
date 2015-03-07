@@ -21,7 +21,7 @@ lmt(emobj.0, emobj.a, x, tau = 0.5, n.mc = 1000, verbose = FALSE)
   likelihood ratio statistics, degrees of freedom, non-centrality
   of chi-squared distributions \dots etc. Based on Monte Carlo methods
   to estimate parameters of likelihood mixture tests, this function
-  return a p-value for testing H0: \code{emobj.0} v.s. Ha: \code{emboj.a}.
+  return a p-value for testing H0: \code{emobj.0} v.s. Ha: \code{emobj.a}.
 }
 \value{
   A list of class \code{lmt} are returned.

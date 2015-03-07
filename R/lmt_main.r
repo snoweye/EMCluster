@@ -35,7 +35,7 @@ lmt <- function(emobj.0, emobj.a, x, tau = 0.5, n.mc = 1000, verbose = FALSE){
   pv <- pv.0 * tau + pv.a * (1 - tau)
 
   # Return.
-  ret <- list(K0 = k.0, Ka = k.a, ll.0 = ll.0, ll.a = ll.a,
+  ret <- list(K.0 = k.0, K.a = k.a, ll.0 = ll.0, ll.a = ll.a,
               delta.hat = delta.hat,
               E.delta = E.delta, E.chi2.0 = E.chi2.0, E.chi2.a = E.chi2.a,
               T = T, pv.0 = pv.0, pv.a = pv.a, pv = pv)

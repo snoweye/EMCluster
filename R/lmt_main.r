@@ -1,6 +1,7 @@
 # For LMT.
 
-lmt <- function(emobj.0, emobj.a, x, tau = 0.5, n.mc = 1000, verbose = FALSE){
+lmt <- function(emobj.0, emobj.a, x, tau = 0.5, n.mc.E.delta = 1000,
+    n.mc.E.chi2 = 1000, verbose = FALSE){
   if(class(emobj.0) != "emret" || class(emobj.a) != "emret"){
     stop("emobj.0 and emobj.a should be both in \"emret\" class.")
   }
@@ -18,13 +19,13 @@ lmt <- function(emobj.0, emobj.a, x, tau = 0.5, n.mc = 1000, verbose = FALSE){
 
   # Likelihood ratio statistics
   delta.hat <- emobj.a$llhdval - emobj.0$llhdval
-  E.delta <- get.E.delta(x, emobj.0, emobj.a, tau = tau, n.mc = n.mc)
+  E.delta <- get.E.delta(x, emobj.0, emobj.a, tau = tau, n.mc = n.mc.E.delta)
 
   # Chi-squared statistics
-  E.chi2.0 <- get.E.chi2(x, emobj.0, emobj.a, "0", tau = tau, n.mc = n.mc,
-                         verbose = verbose)
-  E.chi2.a <- get.E.chi2(x, emobj.0, emobj.a, "a", tau = tau, n.mc = n.mc,
-                         verbose = verbose)
+  E.chi2.0 <- get.E.chi2(x, emobj.0, emobj.a, "0", tau = tau,
+                         n.mc = n.mc.E.chi2, verbose = verbose)
+  E.chi2.a <- get.E.chi2(x, emobj.0, emobj.a, "a", tau = tau,
+                         n.mc = n.mc.E.chi2, verbose = verbose)
 
   # Testing statistics.
   T <- 2 * (delta.hat - E.delta)
@@ -57,13 +58,13 @@ print.lmt <- function(x, digits = max(4, getOption("digits") - 3), ...){
   pv.a <- x$pv.a
   pv <- x$pv
 
-  cat("  H0: K = ", K.0, " vs Ha: K = ", K.a, "\n",
-      "    ll0 = ", ll.0, ", lla = ", ll.a, "\n",
-      "    df0 = ", E.chi2.0[1], ", nc0 = ", E.chi2.0[2],
-      ", dfa = ", E.chi2.a[1], ", nca = ", E.chi2.a[2], "\n",
+  cat("- H.0: K = ", K.0, " vs H.a: K = ", K.a, "\n",
+      "    ll.0 = ", ll.0, ", ll.a = ", ll.a, "\n",
+      "    df.0 = ", E.chi2.0[1], ", nc.0 = ", E.chi2.0[2],
+      ", df.a = ", E.chi2.a[1], ", nc.a = ", E.chi2.a[2], "\n",
       "    delta.hat = ", delta.hat, ", E.delta = ", E.delta,
       ", T = ", T, "\n",
-      "    pv0 = ", pv.0, ", pva = ", pv.a, " pv = ", pv,
+      "    pv.0 = ", pv.0, ", pv.a = ", pv.a, " pv = ", pv,
       "\n", sep = "")
 
   invisible()

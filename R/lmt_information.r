@@ -67,9 +67,9 @@ Iy <- function(x, PI, MU, S, t){
   SS %*% t(SS)
 } # End of Iy().
 
-Iy2 <- function(x, PI0, MU0, S0, t0, PIa, MUa, Sa, ta){
-  SS <- rbind(partial.logL(x, PI0, MU0, S0, t0),
-              partial.logL(x, PIa, MUa, Sa, ta))
+Iy2 <- function(x, PI.0, MU.0, S.0, t.0, PI.a, MU.a, S.a, t.a){
+  SS <- rbind(partial.logL(x, PI.0, MU.0, S.0, t.0),
+              partial.logL(x, PI.a, MU.a, S.a, t.a))
   SS %*% t(SS)
 } # End of Iy2().
 
@@ -101,67 +101,67 @@ GenDataSet <- function(N, PI, MU, S){
   list(x = x, id = id)
 } # End of GenDataSet().
 
-GenMixDataSet <- function(N, PI0, MU0, S0, PIa, MUa, Sa, tau = 0.5){
-  N0 <- rbinom(1, N, c(tau, 1-tau))
-  Na <- N - N0
+GenMixDataSet <- function(N, PI.0, MU.0, S.0, PI.a, MU.a, S.a, tau = 0.5){
+  N.0 <- rbinom(1, N, c(tau, 1-tau))
+  N.a <- N - N.0
 
-  ret0 <- GenDataSet(N0, PI0, MU0, S0)
-  reta <- GenDataSet(Na, PIa, MUa, Sa)
+  ret.0 <- GenDataSet(N.0, PI.0, MU.0, S.0)
+  ret.a <- GenDataSet(N.a, PI.a, MU.a, S.a)
 
-  list(x = rbind(ret0$x, reta$x), id = c(ret0$id, reta$id),
-       hid = c(rep(0, N0), rep(1, Na)))
+  list(x = rbind(ret.0$x, ret.a$x), id = c(ret.0$id, ret.a$id),
+       hid = c(rep(0, N.0), rep(1, N.a)))
 } # End of GenMixDataSet().
 
 
 ### Observed Information for DataSet.
-w.2 <- function(x, emobj0, emobja, tau = 0.5){
-  f0 <- sum(log(dmixmvn(x, emobj0))) + log(tau)
-  fa <- sum(log(dmixmvn(x, emobja))) + log(1 - tau)
+w.2 <- function(x, emobj.0, emobj.a, tau = 0.5){
+  f.0 <- sum(log(dmixmvn(x, emobj.0))) + log(tau)
+  f.a <- sum(log(dmixmvn(x, emobj.a))) + log(1 - tau)
   ### Numerical unstable.
-  # g <- exp(f0) + exp(fa)
-  # c(exp(f0) / g, exp(fa) / g)
-  pi0 <- 1 / (exp(fa - f0) + 1)
-  c(pi0, 1 - pi0)
+  # g <- exp(f.0) + exp(f.a)
+  # c(exp(f.0) / g, exp(f.a) / g)
+  pi.0 <- 1 / (exp(f.a - f.0) + 1)
+  c(pi.0, 1 - pi.0)
 } # End of w.2().
 
 
 ### Obtain parameters.
-get.E.chi2 <- function(x, emobj0, emobja, given = c("0", "a"), tau = 0.5,
+get.E.chi2 <- function(x, emobj.0, emobj.a, given = c("0", "a"), tau = 0.5,
     n.mc = 1000, verbose = TRUE){
   N <- nrow(x)
   p <- ncol(x)
 
-  K0 <- emobj0$nclass
-  PI0 <- emobj0$pi
-  MU0 <- emobj0$Mu
-  S0 <- LTSigma2variance(emobj0$LTSigma) 
+  K.0 <- emobj.0$nclass
+  PI.0 <- emobj.0$pi
+  MU.0 <- emobj.0$Mu
+  S.0 <- LTSigma2variance(emobj.0$LTSigma) 
 
-  Ka <- emobja$nclass
-  PIa <- emobja$pi
-  MUa <- emobja$Mu
-  Sa <- LTSigma2variance(emobja$LTSigma) 
+  K.a <- emobj.a$nclass
+  PI.a <- emobj.a$pi
+  MU.a <- emobj.a$Mu
+  S.a <- LTSigma2variance(emobj.a$LTSigma) 
 
   if(given[1] == "0"){
-    PI <- PI0
-    MU <- MU0
-    S <- S0
+    PI <- PI.0
+    MU <- MU.0
+    S <- S.0
   } else if(given[1] == "a"){
-    PI <- PIa
-    MU <- MUa
-    S <- Sa
+    PI <- PI.a
+    MU <- MU.a
+    S <- S.a
   } else{
     stop("given should be '0' or 'a'.")
   }
 
   ### Obtain nabla logL via Monte Carlo.
   x.new <- GenDataSet(n.mc, PI, MU, S)$x
-  t0 <- postPI(x.new, emobj0)
-  ta <- postPI(x.new, emobja)
-  pl0 <- partial.logL(x.new, PI0, MU0, S0, t0)
-  pla <- partial.logL(x.new, PIa, MUa, Sa, ta)
+  t.0 <- postPI(x.new, emobj.0)
+  t.a <- postPI(x.new, emobj.a)
+  pl.0 <- partial.logL(x.new, PI.0, MU.0, S.0, t.0)
+  pl.a <- partial.logL(x.new, PI.a, MU.a, S.a, t.a)
 
   ### Expected degrees of freedom.
-  nl <- rbind(pl0, pla)
+  nl <- rbind(pl.0, pl.a)
   mu <- rowMeans(nl)
   nl <- nl - mu
   J <- nl %*% t(nl) / n.mc
@@ -171,12 +171,12 @@ get.E.chi2 <- function(x, emobj0, emobja, given = c("0", "a"), tau = 0.5,
                 (cumsum(par.df) / sum(par.df) < 0.90))
 
   ### Expected noncenteriality
-  M0 <- nrow(pl0)
-  Ma <- nrow(pla)
+  M.0 <- nrow(pl.0)
+  M.a <- nrow(pl.a)
   if(given == "0"){
-    id <- M0 + (1:Ma)
+    id <- M.0 + (1:M.a)
   } else{
-    id <- 1:M0
+    id <- 1:M.0
   }
   J.nc <- matrix(J[id, id], nrow = length(id))
   nu <- matrix(mu[id], nrow = length(id))
@@ -192,28 +192,28 @@ get.E.chi2 <- function(x, emobj0, emobja, given = c("0", "a"), tau = 0.5,
   ### For returns.
   ret <- c(par.df, par.nc)
   if(verbose){
-    cat("K0=", K0, ", M0=", M0, " v.s. Ka=", Ka, ", Ma=", Ma,
+    cat("K.0=", K.0, ", M.0=", M.0, " v.s. K.a=", K.a, ", M.a=", M.a,
         " | given=", given, " : df=", ret[1], ", nc=", ret[2],
         ".\n", sep = "")
   }
   ret
 } # End of get.E.chi2().
 
-get.E.delta <- function(x, emobj0, emobja, tau = 0.5, n.mc = 1000){
+get.E.delta <- function(x, emobj.0, emobj.a, tau = 0.5, n.mc = 1000){
   N <- nrow(x)
 
-  PI0 <- emobj0$pi
-  MU0 <- emobj0$Mu
-  S0 <- LTSigma2variance(emobj0$LTSigma) 
+  PI.0 <- emobj.0$pi
+  MU.0 <- emobj.0$Mu
+  S.0 <- LTSigma2variance(emobj.0$LTSigma) 
 
-  PIa <- emobja$pi
-  MUa <- emobja$Mu
-  Sa <- LTSigma2variance(emobja$LTSigma) 
+  PI.a <- emobj.a$pi
+  MU.a <- emobj.a$Mu
+  S.a <- LTSigma2variance(emobj.a$LTSigma) 
 
   ### This is inaccurate and incorrect!!!
   # E.delta <- lapply(1:n.mc, function(i){
-  #   x.new <- GenMixDataSet(N, PI0, MU0, S0, PIa, MUa, Sa, tau = tau)$x
-  #   logL(x.new, emobja) - logL(x.new, emobj0)
+  #   x.new <- GenMixDataSet(N, PI.0, MU.0, S.0, PI.a, MU.a, S.a, tau = tau)$x
+  #   logL(x.new, emobj.a) - logL(x.new, emobj.0)
   # })
 
   n.mc.0 <- rbinom(1, n.mc, c(tau, 1-tau))
@@ -222,15 +222,15 @@ get.E.delta <- function(x, emobj0, emobja, tau = 0.5, n.mc = 1000){
   E.delta <- NULL
   if(n.mc.0 > 0){
     tmp <- lapply(1:n.mc.0, function(i){
-      x.new <- GenDataSet(N, PI0, MU0, S0)$x
-      logL(x.new, emobja) - logL(x.new, emobj0)
+      x.new <- GenDataSet(N, PI.0, MU.0, S.0)$x
+      logL(x.new, emobj.a) - logL(x.new, emobj.0)
     })
     E.delta <- c(E.delta, tmp)
   }
   if(n.mc.a > 0){
     tmp <- lapply(1:n.mc.a, function(i){
-      x.new <- GenDataSet(N, PIa, MUa, Sa)$x
-      logL(x.new, emobja) - logL(x.new, emobj0)
+      x.new <- GenDataSet(N, PI.a, MU.a, S.a)$x
+      logL(x.new, emobj.a) - logL(x.new, emobj.0)
     })
     E.delta <- c(E.delta, tmp)
   }

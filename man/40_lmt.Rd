@@ -6,14 +6,18 @@
   covariance matrix and different numbers of clusters.
 }
 \usage{
-lmt(emobj.0, emobj.a, x, tau = 0.5, n.mc = 1000, verbose = FALSE)
+lmt(emobj.0, emobj.a, x, tau = 0.5, n.mc.E.delta = 1000,
+    n.mc.E.chi2, verbose = FALSE)
 }
 \arguments{
   \item{emobj.0}{a \code{emret} object for the null hypothesis.}
   \item{emobj.a}{a \code{emret} object for the alternative hypothesis.}
   \item{x}{the data matrix, dimension \eqn{n\times p}{n * p}.}
   \item{tau}{proportion of null and alternative hypotheses.}
-  \item{n.mc}{number of Monte Carlo simulations.}
+  \item{n.mc.E.delta}{number of Monte Carlo simulations for expectation
+                      of delta (difference of logL).}
+  \item{n.mc.E.chi2}{number of Monte Carlo simulations for expectation
+                     of chisquare statistics.}
   \item{verbose}{if verbose.}
 }
 \details{

@@ -1,6 +1,6 @@
 %\VignetteIndexEntry{EMCluster-guide}
 
-\documentclass[article,shortnames,nojss]{EMCluster-include/jss}
+\documentclass[article,shortnames,nojss]{jss}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -11,31 +11,27 @@
 \author{
 \begin{minipage}{6in}
 \centering
-Wei-Chen Chen$^1$, Ranjan Maitra$^2$, Volodymyr Melnykov$^3$
+Wei-Chen Chen$^1$, Ranjan Maitra$^2$
 \end{minipage}
 \\
 \\
-$^1$Computer Science and Mathematics Division, \\
-Oak Ridge National Laboratory, \\
-Oak Ridge, TN, USA \\
+$^1$Center for Biologics Evaluation and Research, \\
+Food and Drug Adminstration, \\
+Silver Spring, MD, USA \\
 \\
 $^2$Department of Statistics, \\
 Iowa State University, \\
 Ames, IA, USA \\
-\\
-$^3$Department of Information Systems, Statistics, and Management Science, \\
-The University of Alabama, \\
-Tuscaloosa, AL, USA \\
 %\\
 %\\
 %\today
 }
 \title{A Quick Guide for the \pkg{EMCluster} Package}
 %\\
-%\vspace{0.2cm} \large (Based on Version 0.1-2)}
+%\vspace{0.2cm} \large (Based on Version 0.2-5)}
 
 %% for pretty printing and a nice hypersummary also set:
-\Plainauthor{Wei-Chen Chen, Ranjan Maitra, Volodymyr Melnykov} %% comma-separated
+\Plainauthor{Wei-Chen Chen, Ranjan Maitra} %% comma-separated
 \Plaintitle{Quick Guide for EMCluster} %% without formatting
 \Shorttitle{Quick Guide for EMCluster} %% a short title (if necessary)
 
@@ -73,6 +69,7 @@ Tuscaloosa, AL, USA \\
 %% end of declarations %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
+\input{./EMCluster-include/my_jss.cls}
 \input{./EMCluster-include/00-preamble}
 \input{./EMCluster-include/00-defs}
 

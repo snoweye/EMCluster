@@ -4,22 +4,20 @@ citEntry(
   entry = "Misc",
   title = "{EMCluster}: {EM} Algorithm for Model-Based Clustering of Finite Mixture Gaussian Distribution",
   author = personList(as.person("Wei-Chen Chen"),
-                      as.person("Ranjan Maitra"),
-                      as.person("Volodymyr Melnykov")),
-  year = "2012",
+                      as.person("Ranjan Maitra")),
+  year = "2015",
   note = "{R} Package, URL http://cran.r-project.org/package=EMCluster",
-  textVersion = "Chen, W.-C., Maitra, R., Melnykov, V. (2012) EMCluster: EM Algorithm for Model-Based Clustering of Finite Mixture Gaussian Distribution. R Package, URL http://cran.r-project.org/package=EMCluster",
-  key = "Chen2012EMClusterpackage"
+  textVersion = "Chen, W.-C., Maitra, R. (2015) EMCluster: EM Algorithm for Model-Based Clustering of Finite Mixture Gaussian Distribution. R Package, URL http://cran.r-project.org/package=EMCluster",
+  key = "Chen2015EMClusterpackage"
 )
 
 citEntry(
   entry = "Manual",
-  title = "A Quick Guid for the {EMCluster} Package",
+  title = "A Quick Guid for the {EMCluster} Package  (Ver. 0.2-5)",
   author = personList(as.person("Wei-Chen Chen"),
-                      as.person("Ranjan Maitra"),
-                      as.person("Volodymyr Melnykov")),
-  year = "2012",
+                      as.person("Ranjan Maitra")),
+  year = "2015",
   note = "{R} Vignette, URL http://cran.r-project.org/package=EMCluster",
-  textVersion = "Chen, W.-C., Maitra, R., Melnykov, V. (2012) A Quick Guid for the EMCluster Package. R Vignette, URL http://cran.r-project.org/package=EMCluster",
-  key = "Chen2012EMClustervignette"
+  textVersion = "Chen, W.-C., Maitra, R. (2015) A Quick Guid for the EMCluster Package (Ver. 0.2-5). R Vignette, URL http://cran.r-project.org/package=EMCluster",
+  key = "Chen2015EMClustervignette"
 )

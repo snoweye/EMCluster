@@ -48,7 +48,6 @@
   \url{http://maitra.public.iastate.edu/}
 }
 \author{
-  Wei-Chen Chen \email{wccsnow@gmail.com}, Ranjan Maitra, and
-  Volodymyr Melnykov.
+  Wei-Chen Chen \email{wccsnow@gmail.com} and Ranjan Maitra.
 }
 \keyword{internal}

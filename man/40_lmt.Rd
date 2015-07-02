@@ -34,8 +34,7 @@ lmt(emobj.0, emobj.a, x, tau = 0.5, n.mc.E.delta = 1000,
   \url{http://maitra.public.iastate.edu/}
 }
 \author{
-  Wei-Chen Chen \email{wccsnow@gmail.com}, Ranjan Maitra, and
-  Volodymyr Melnykov.
+  Wei-Chen Chen \email{wccsnow@gmail.com} and Ranjan Maitra.
 }
 \seealso{
   \code{\link{init.EM}}.

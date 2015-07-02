@@ -44,8 +44,7 @@ em.icl.bic(x, emobj = NULL, pi = NULL, Mu = NULL, LTSigma = NULL)
   \url{http://maitra.public.iastate.edu/}
 }
 \author{
-  Wei-Chen Chen \email{wccsnow@gmail.com}, Ranjan Maitra, and
-  Volodymyr Melnykov.
+  Wei-Chen Chen \email{wccsnow@gmail.com} and Ranjan Maitra
 }
 \seealso{
   \code{\link{init.EM}}.

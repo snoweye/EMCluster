@@ -8,3 +8,4 @@ starts_via_svd	EMCluster	Test a function starts.via.svd().
 RRand		EMCluster	Test RRand().
 lmt             EMCluster       Test likelihood mixture test, lmt().
 ppcontour       EMCluster       Test for project.on.2d() and plotppcontour().
+logit		EMCluster	Test for logit of post z and mixing proportion.

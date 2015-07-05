@@ -7,7 +7,7 @@ Authors@R: c(person("Wei-Chen", "Chen", role = c("aut", "cre"), email =
         "wccsnow@gmail.com"),
         person("Ranjan", "Maitra", role = "aut"),
         person("Volodymyr", "Melnykov", role = "ctb"))
-Depends: R (>= 2.14.0), MASS
+Depends: R (>= 2.14.0), MASS, Matrix
 Enhances: PPtree, RColorBrewer, pbdMPI, pmclust
 LazyLoad: yes
 LazyData: yes
@@ -15,5 +15,11 @@ Description: EM algorithms and several efficient
         initialization methods for model-based clustering of finite
         mixture Gaussian distribution with unstructured dispersion
         in both of unsupervised and semi-supervised learning.
-License: Mozilla Public License 2.0 
+License: Mozilla Public License 2.0
 URL: http://maitra.public.iastate.edu/
+NeedsCompilation: yes
+Packaged: 2015-07-05 21:11:03 UTC; snoweye
+Author: Wei-Chen Chen [aut, cre],
+  Ranjan Maitra [aut],
+  Volodymyr Melnykov [ctb]
+Maintainer: Wei-Chen Chen <wccsnow@gmail.com>

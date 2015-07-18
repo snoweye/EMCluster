@@ -7,7 +7,7 @@ Authors@R: c(person("Wei-Chen", "Chen", role = c("aut", "cre"), email =
         "wccsnow@gmail.com"),
         person("Ranjan", "Maitra", role = "aut"),
         person("Volodymyr", "Melnykov", role = "ctb"))
-Depends: R (>= 3.2.1), MASS, Matrix
+Depends: R (>= 3.0.1), MASS, Matrix
 Enhances: PPtree, RColorBrewer, pbdMPI, pmclust
 LazyLoad: yes
 LazyData: yes
@@ -18,7 +18,7 @@ Description: EM algorithms and several efficient
 License: Mozilla Public License 2.0
 URL: http://maitra.public.iastate.edu/
 NeedsCompilation: yes
-Packaged: 2015-07-18 19:21:42 UTC; snoweye
+Packaged: 2015-07-18 20:43:08 UTC; snoweye
 Author: Wei-Chen Chen [aut, cre],
   Ranjan Maitra [aut],
   Volodymyr Melnykov [ctb]

@@ -1,5 +1,13 @@
 2015-07-18: Ver. 0.2-5
   * Several changes.
+  * Rename partial.logL() to partial.q() and change all other caller functions.
+  * Add partial.logL().
+  * Add logitPI = TRUE to partial.q() and partial.logL().
+  * Normalize pi at the end of EM for functions returning emobj.
+  * Add log = FALSE to dmixmvn().
+  * Add Jaccard.Index().
+  * Change man pages.
+  * Change authorship.
 
 2015-07-05: Ver. 0.2-5
   * Add logit post I information.

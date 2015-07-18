@@ -42,6 +42,7 @@ emgroup <- function(x, nclass = 1, EMC = .EMC){
                as.double(EMC$em.eps))
 
   if(ret$flag == 1) ret$llhdval <- NA
+  ret$pi <- ret$pi / sum(ret$pi)
   ret$Mu <- matrix(ret$Mu, nrow = nclass, byrow = TRUE)
   ret$LTSigma <- matrix(ret$LTSigma, nrow = nclass, byrow = TRUE)
   ret$class <- ret$class + 1
@@ -75,6 +76,7 @@ emgroup.wt <- function(x, nclass = 1, EMC = .EMC){
                as.double(EMC$em.eps))
 
   if(ret$flag == 1) ret$llhdval <- NA
+  ret$pi <- ret$pi / sum(ret$pi)
   ret$Mu <- matrix(ret$Mu, ncol = nclass)
   ret$LTSigma <- matrix(ret$LTSigma, ncol = nclass)
   ret$class <- ret$class + 1

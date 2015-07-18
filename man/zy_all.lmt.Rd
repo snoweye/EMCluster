@@ -1,5 +1,6 @@
 \name{LMT Functions}
 \alias{Gmat}
+\alias{partial.q}
 \alias{partial.logL}
 \alias{Iy}
 \alias{Iy2}

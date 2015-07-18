@@ -56,6 +56,7 @@ shortemcluster <- function(x, emobj = NULL, pi = NULL, Mu = NULL,
                as.integer(maxiter),
                as.double(eps))
 
+  ret$pi <- ret$pi / sum(ret$pi)
   ret$Mu <- matrix(ret$Mu, nrow = nclass, byrow = TRUE)
   ret$LTSigma <- matrix(ret$LTSigma, nrow = nclass, byrow = TRUE)
 
@@ -96,6 +97,7 @@ shortemcluster.wt <- function(x, emobj, maxiter = 100, eps = 1e-2){
                as.integer(maxiter),
                as.double(eps))
 
+  ret$pi <- ret$pi / sum(ret$pi)
   ret$Mu <- matrix(ret$Mu, ncol = nclass)
   ret$LTSigma <- matrix(ret$LTSigma, ncol = nclass)
 

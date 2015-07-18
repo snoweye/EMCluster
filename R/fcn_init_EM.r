@@ -111,6 +111,7 @@ init.EM <- function(x, nclass = 1, lab = NULL, EMC = .EMC,
   }
   ret$flag <- flag
 
+  ret$pi <- ret$pi / sum(ret$pi)
   ret$Mu <- matrix(ret$Mu, nrow = nclass, byrow = TRUE)
   ret$LTSigma <- matrix(ret$LTSigma, nrow = nclass, byrow = TRUE)
   ret$class <- ret$class + 1

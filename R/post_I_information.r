@@ -1,7 +1,7 @@
 ### This file is for Cov(z_nk) and Cov(z_nk - z_n1).
 
 ### Partial logL. Return a matrix with dimension M * N.
-# partial.logL <- function(x, PI, MU, S, post.z)
+# partial.q <- function(x, PI, MU, S, post.z, logit.PI = TRUE)
 
 ### Compute posterior. Return a matrix with dimension N * K.
 # postPI <- function(x, emobj)
@@ -86,7 +86,7 @@ get.cov.param <- function(x, emobj, post.z){
   S <- LTSigma2variance(emobj$LTSigma)
 
   ### cov of param = {PI, MU, S}.
-  pl <- partial.logL(x, PI, MU, S, post.z)
+  pl <- partial.q(x, PI, MU, S, post.z, logit.PI = FALSE)
 
   ### Get cov of param
   I <- pl %*% t(pl)

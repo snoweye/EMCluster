@@ -88,7 +88,8 @@ logL.wt <- function(x, emobj){
 #              matrices.
 # Output:
 #   dmixmvn: SEXP[1], density of mixed multivariate normal distribution.
-dmixmvn <- function(x, emobj = NULL, pi = NULL, Mu = NULL, LTSigma = NULL){
+dmixmvn <- function(x, emobj = NULL, pi = NULL, Mu = NULL, LTSigma = NULL,
+                    log = FALSE){
 ### x: data matrix with length p or n*p.
 ### emobj (list[3]): output values contains
 ###                  pi (array[nclass]),
@@ -127,6 +128,9 @@ dmixmvn <- function(x, emobj = NULL, pi = NULL, Mu = NULL, LTSigma = NULL){
   if(is.vector(x)){
     ret <- my.dmixmvn(x) 
   }
+  if(log){
+    ret <- log(ret)
+  }
   ret
 }
 
@@ -134,7 +138,7 @@ dmixmvn <- function(x, emobj = NULL, pi = NULL, Mu = NULL, LTSigma = NULL){
 
 
 ### This function is only for advance users.
-dmixmvn.wt <- function(x, emobj){
+dmixmvn.wt <- function(x, emobj, log = FALSE){
 ### x: data matrix with length p or n*p.
 ### emobj (list[3]): output values contains
 ###                  pi (array[nclass]),
@@ -167,6 +171,9 @@ dmixmvn.wt <- function(x, emobj){
   }
   if(is.vector(x)){
     ret <- my.dmixmvn(x) 
+  }
+  if(log){
+    ret <- log(ret)
   }
   ret
 }

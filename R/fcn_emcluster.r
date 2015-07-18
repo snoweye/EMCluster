@@ -89,6 +89,7 @@ emcluster <- function(x, emobj = NULL, pi = NULL, Mu = NULL,
                  as.integer(lab))
   }
 
+  ret$pi <- ret$pi / sum(ret$pi)
   ret$Mu <- matrix(ret$Mu, nrow = nclass, byrow = TRUE)
   ret$LTSigma <- matrix(ret$LTSigma, nrow = nclass, byrow = TRUE)
 
@@ -164,6 +165,7 @@ emcluster.wt <- function(x, emobj, lab = NULL,
                  as.integer(labK))
   }
 
+  ret$pi <- ret$pi / sum(ret$pi)
   ret$Mu <- matrix(ret$Mu, ncol = nclass)
   ret$LTSigma <- matrix(ret$LTSigma, ncol = nclass)
 

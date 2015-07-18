@@ -38,6 +38,7 @@ m.step <- function(x, emobj = NULL, Gamma = NULL, assign.class = FALSE){
                as.integer(nclass),
                as.double(t(emobj$Gamma)))
 
+  ret$pi <- ret$pi / sum(ret$pi)
   ret$Mu <- matrix(ret$Mu, nrow = nclass, byrow = TRUE)
   ret$LTSigma <- matrix(ret$LTSigma, nrow = nclass, byrow = TRUE)
 
@@ -76,6 +77,7 @@ m.step.wt <- function(x, emobj, assign.class = FALSE){
                as.integer(nclass),
                as.double(emobj$Gamma))
 
+  ret$pi <- ret$pi / sum(ret$pi)
   ret$Mu <- matrix(ret$Mu, ncol = nclass)
   ret$LTSigma <- matrix(ret$LTSigma, ncol = nclass)
 

@@ -1,8 +1,5 @@
 ### Get the Cov(logit pi_k) and 95% CE.
 
-### Partial logL. Return a matrix with dimension M * N.
-# partial.logL.I <- function(x, PI, BPI, MU, SIGMA, post.z)
-
 ### Paritial all logit(pi_k). Return a K * (K - 1)
 partial.logit.p <- function(PI){
   K <- length(PI)

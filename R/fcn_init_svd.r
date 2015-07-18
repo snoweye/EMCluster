@@ -48,6 +48,7 @@ starts.via.svd <- function(x, nclass = 1, method = c("em", "kmeans"),
                as.integer(method.Call),
                as.double(EMC$alpha))
 
+  ret$pi <- ret$pi / sum(ret$pi)
   ret$Mu <- matrix(ret$Mu, nrow = nclass, byrow = TRUE)
   ret$LTSigma <- matrix(ret$LTSigma, nrow = nclass, byrow = TRUE)
   ret$class <- ret$class + 1
@@ -128,6 +129,7 @@ starts.via.svd.wt <- function(x, nclass = 1, method = c("em", "kmeans"),
                as.integer(method.Call),
                as.double(EMC$alpha))
 
+  ret$pi <- ret$pi / sum(ret$pi)
   ret$Mu <- matrix(ret$Mu, ncol = nclass)
   ret$LTSigma <- matrix(ret$LTSigma, ncol = nclass)
   ret$class <- ret$class + 1

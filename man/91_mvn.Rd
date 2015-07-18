@@ -11,7 +11,7 @@
 \usage{
 dmvn(x, mu, LTsigma, log = FALSE)
 dlmvn(x, mu, LTsigma, log = TRUE)
-dmixmvn(x, emobj = NULL, pi = NULL, Mu = NULL, LTSigma = NULL)
+dmixmvn(x, emobj = NULL, pi = NULL, Mu = NULL, LTSigma = NULL, log = FALSE)
 logL(x, emobj = NULL, pi = NULL, Mu = NULL, LTSigma = NULL)
 }
 \arguments{
@@ -38,8 +38,9 @@ logL(x, emobj = NULL, pi = NULL, Mu = NULL, LTSigma = NULL)
   \code{Mu}, and \code{LTSigma} to assign class id to each observation of
   \code{x}.
 
-  The \code{logL} returns log likelihood of mixture multivariate
-  distribution.
+  The \code{logL} returns the value of the observed log likelihood function
+  of the parameters at the current values of the parameters \code{pi},
+  \code{Mu}, and \code{LTSigma}, with the suplied data matrix \code{x}.
 }
 \value{
   A density value is returned.

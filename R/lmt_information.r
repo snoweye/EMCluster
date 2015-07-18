@@ -23,8 +23,8 @@ Gmat <- function(p){
 } # End of Gmat().
 
 
-### partial logL. Return a matrix with dimension M * N.
-partial.logL <- function(x, PI, MU, S, t){
+### partial.q. Return a matrix with dimension M * N.
+partial.q <- function(x, PI, MU, S, t, logit.PI = TRUE){
   K <- length(PI)
   N <- dim(x)[1]
   p <- dim(x)[2]
@@ -40,14 +40,19 @@ partial.logL <- function(x, PI, MU, S, t){
   SS <- lapply(1:N, function(i){
     Sbuf.1 <- NULL
     if(K != 1){
-      tmp <- t[i, ] / PI
-      Sbuf.1 <- tmp[1:(K-1)] - tmp[K]
+      if(logit.PI){    # partial wrt the multivariate logit parameter
+        Sbuf.1 <- t[i, -K] - PI[-K]
+      } else{
+        tmp <- t[i, ] / PI
+        Sbuf.1 <- tmp[1:(K-1)] - tmp[K]
+      }
     }
 
     Sbuf.2 <- list()
     Sbuf.3 <- list()
     for(j in 1:K){
       tmp <- x[i,] - MU[j,]
+      dim(tmp) <- c(p, 1)
       tmp.1 <- t[i,j] * invS[,,j]
       Sbuf.2[[j]] <- tmp.1 %*% tmp
       Smat <-  tmp.1 %*% (tmp %*% t(tmp) %*% invS[,,j] - Id) / 2
@@ -58,18 +63,18 @@ partial.logL <- function(x, PI, MU, S, t){
   })
 
   do.call("cbind", SS)
-} # End of partial.logL().
+} # End of partial.q().
 
 
 ### Back compartiable with Volodymyr's code.
 Iy <- function(x, PI, MU, S, t){
-  SS <- partial.logL(x, PI, MU, S, t)
+  SS <- partial.q(x, PI, MU, S, t, logit.PI = FALSE)
   SS %*% t(SS)
 } # End of Iy().
 
 Iy2 <- function(x, PI.0, MU.0, S.0, t.0, PI.a, MU.a, S.a, t.a){
-  SS <- rbind(partial.logL(x, PI.0, MU.0, S.0, t.0),
-              partial.logL(x, PI.a, MU.a, S.a, t.a))
+  SS <- rbind(partial.q(x, PI.0, MU.0, S.0, t.0, logit.PI = FALSE),
+              partial.q(x, PI.a, MU.a, S.a, t.a, logit.PI = FALSE))
   SS %*% t(SS)
 } # End of Iy2().
 
@@ -157,8 +162,8 @@ get.E.chi2 <- function(x, emobj.0, emobj.a, given = c("0", "a"), tau = 0.5,
   x.new <- GenDataSet(n.mc, PI, MU, S)$x
   t.0 <- postPI(x.new, emobj.0)
   t.a <- postPI(x.new, emobj.a)
-  pl.0 <- partial.logL(x.new, PI.0, MU.0, S.0, t.0)
-  pl.a <- partial.logL(x.new, PI.a, MU.a, S.a, t.a)
+  pl.0 <- partial.q(x.new, PI.0, MU.0, S.0, t.0, logit.PI = FALSE)
+  pl.a <- partial.q(x.new, PI.a, MU.a, S.a, t.a, logit.PI = FALSE)
 
   ### Expected degrees of freedom.
   nl <- rbind(pl.0, pl.a)

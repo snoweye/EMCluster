@@ -9,14 +9,7 @@ Jaccard.Index <- function(x, y){
   id <- (!is.na(xx)) & (!is.na(yy))
   xx <- xx[id]
   yy <- yy[id]
-  tmpx <- xx
-  tmpy <- yy
-
-  xx[tmpx == 1] <- 0
-  xx[tmpx != 1] <- 1
-
-  yy[tmpy == 1] <- 0
-  yy[tmpy != 1] <- 1
-
-  sum(xx == yy) / (length(xx) - sum((1 - xx) * (1 - yy)))
+  # xx[xx != 1] <- 0
+  # yy[yy != 1] <- 0
+  sum(xx == 1 & yy == 1) / sum(xx == 1 | yy == 1)
 } # End of Jaccard.Index().

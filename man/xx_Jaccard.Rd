@@ -12,8 +12,8 @@ Jaccard.Index(x, y)
   \item{y}{predicted binary ids, 0 or 1.}
 }
 \details{
-  All ids, \code{x} and \code{y}, should be either 0 or 1. Any value other
-  than 1 will be converted to 0.
+  All ids, \code{x} and \code{y}, should be either 0 (not active) or 1 (active).
+  Any value other than 1 will be converted to 0.
 }
 \value{
   Return the value of Jaccard index.

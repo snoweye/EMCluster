@@ -18,7 +18,7 @@ Description: EM algorithms and several efficient
 License: Mozilla Public License 2.0
 URL: http://maitra.public.iastate.edu/
 NeedsCompilation: yes
-Packaged: 2015-07-18 20:43:08 UTC; snoweye
+Packaged: 2015-07-19 19:40:20 UTC; snoweye
 Author: Wei-Chen Chen [aut, cre],
   Ranjan Maitra [aut],
   Volodymyr Melnykov [ctb]

@@ -1,14 +1,34 @@
+#include <R.h>
+
 void RRand(int *N, int *TRUK,int *PREDK,int *trcl, int *prcl,
 	   double *Rand,double *adjRand,double *Eindex)
 {
-  int i,j,n[(*TRUK)][(*PREDK)];
+  // int i,j,n[(*TRUK)][(*PREDK)];
+  int i,j;
   double sumtr[(*TRUK)],sumpr[(*PREDK)],sumprsq,sumtrsq,sumsq,discordant,
     sumtrprsq;
   double term1, term2, term3;
   double nij2sum, nidot2sum, ndotj2sum, Wallace;
 
-  for (i=0;i<(*TRUK);i++)    {
-    for (j=0;j<(*PREDK);j++)     {
+/* Fails because n is a 2D array when *TRUK and *PREDK are too large.
+  for (i=0;i<(*TRUK);i++) {
+    for (j=0;j<(*PREDK);j++) {
+      n[i][j]=0;
+    }
+  }
+*/
+
+  int **n;
+  n = (int **) malloc((*TRUK) * sizeof(int *));
+  if(n == NULL) {
+    error("Memory allocation fails at n!\n");
+  }
+  for (i=0;i<(*TRUK);i++) {
+    n[i] = (int *) malloc((*PREDK) * sizeof(int));
+    if(n[i] == NULL) {
+      error("Memory allocation fails at n[i]!\n");
+    }
+    for (j=0;j<(*PREDK);j++) {
       n[i][j]=0;
     }
   }
@@ -81,5 +101,10 @@ void RRand(int *N, int *TRUK,int *PREDK,int *trcl, int *prcl,
 
   (*adjRand)= term1/term2;
 
+  /* Free 2D array pointers. */
+  for (i=0;i<(*TRUK);i++){
+    free(n[i]);
+  }
+  free(n);
 }
 

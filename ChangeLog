@@ -1,3 +1,7 @@
+2015-10-19: Ver. 0.2-5
+  * Fix an adjR seg. fault.
+  * Add recolor().
+
 2015-07-18: Ver. 0.2-5
   * Several changes.
   * Rename partial.logL() to partial.q() and change all other caller functions.

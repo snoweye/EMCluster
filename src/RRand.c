@@ -18,6 +18,7 @@ void RRand(int *N, int *TRUK,int *PREDK,int *trcl, int *prcl,
   }
 */
 
+  /* Fixed by WCC. */
   int **n;
   n = (int **) malloc((*TRUK) * sizeof(int *));
   if(n == NULL) {

@@ -57,7 +57,7 @@ emcluster <- function(x, emobj = NULL, pi = NULL, Mu = NULL,
     labK <- max(lab)
     lab <- lab - 1
     if(length(unique(lab[lab != -1])) != labK) stop("lab is not correct.")
-    if(labK >= nclass) stop("lab is not correct.")
+    if(labK > nclass) stop("lab is not correct.")
     if(any(table(lab[lab >= 0]) < (p + 1))) stop("lab is not correct.")
     ss <- TRUE
   }
@@ -132,7 +132,7 @@ emcluster.wt <- function(x, emobj, lab = NULL,
     labK <- max(lab)
     lab <- lab - 1
     if(length(unique(lab[lab != -1])) != labK) stop("lab is not correct.")
-    if(labK >= nclass) stop("lab is not correct.")
+    if(labK > nclass) stop("lab is not correct.")
     if(any(table(lab[lab >= 0]) < (p + 1))) stop("lab is not correct.")
     ss <- TRUE
   }

@@ -54,7 +54,7 @@ Ames, IA, USA \\
 \Address{
   Wei-Chen Chen\\
   E-mail: \email{wccsnow@gmail.com}\\
-  URL: \url{http://thirteen-01.stat.iastate.edu/snoweye/}
+  URL: \url{http://snoweye.github.io/}
 }
 %% It is also possible to add a telephone and fax number
 %% before the e-mail in the following format:

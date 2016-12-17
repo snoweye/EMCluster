@@ -1,5 +1,6 @@
 2015-10-31: Ver. 0.2-6
   * Change recolor() and add rematch() and recode().
+  * Change url address.
 
 2015-10-19: Ver. 0.2-5
   * Fix an adjR seg. fault.

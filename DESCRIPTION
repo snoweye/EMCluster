@@ -16,6 +16,7 @@ Description: EM algorithms and several efficient
         mixture Gaussian distribution with unstructured dispersion
         in both of unsupervised and semi-supervised learning.
 License: Mozilla Public License 2.0
-URL: http://maitra.public.iastate.edu/
+BugReports: https://github.com/snoweye/EMCluster/issues
+URL: https://github.com/snoweye/EMCluster
 NeedsCompilation: yes
 Maintainer: Wei-Chen Chen <wccsnow@gmail.com>

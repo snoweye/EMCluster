@@ -1,3 +1,6 @@
+2017-03-17: Ver. 0.2-7
+  * Rename emobj$M to emobj$adjM.
+
 2015-10-31: Ver. 0.2-6
   * Change recolor() and add rematch() and recode().
   * Change url address.

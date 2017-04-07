@@ -1,3 +1,6 @@
+2017-04-07: Ver. 0.2-7
+  * Add UNPROTECT(8); to EMCluster/src/it_R_emptr.c.
+
 2017-03-17: Ver. 0.2-7
   * Rename emobj$M to emobj$adjM.
 

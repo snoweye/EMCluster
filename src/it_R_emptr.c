@@ -104,6 +104,7 @@ SEXP create_emptr(SEXP R_X, SEXP R_n, SEXP R_p, SEXP R_nclass,
   emptr->C_labK = INTEGER(R_labK);
   emptr->C_init_method = INTEGER(R_init_method);
 
+  UNPROTECT(8);
   return(ret);
 } /* End of create_emptr(). */
 

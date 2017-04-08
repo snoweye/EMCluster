@@ -1,5 +1,5 @@
 #include <R.h>
-#include<Rinternals.h>
+#include <Rinternals.h>
 #include <R_ext/Rdynload.h>
 
 #include "it_tool.h"

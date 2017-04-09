@@ -1,15 +1,10 @@
 #include <R.h>
-#include <Rinternals.h>
 #include <R_ext/Rdynload.h>
 
-#include "it_tool.h"
+#include "zzz.h"
 
 static const R_CallMethodDef callMethods[] = {
-	{"create_emptr", (DL_FUNC) &create_emptr, 14},
 	{"R_init_EM", (DL_FUNC) &R_init_EM, 13},
-	{"R_lnlikelihood", (DL_FUNC) &R_lnlikelihood, 8},
-	{"R_mixllhd", (DL_FUNC) &R_mixllhd, 7},
-	{"R_dlmvnorm", (DL_FUNC) &R_dlmvnorm, 5},
 	{"R_lnlikelihood", (DL_FUNC) &R_lnlikelihood, 8},
 	{"R_mixllhd", (DL_FUNC) &R_mixllhd, 7},
 	{"R_dlmvnorm", (DL_FUNC) &R_dlmvnorm, 5},

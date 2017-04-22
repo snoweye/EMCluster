@@ -31,7 +31,7 @@
 # Call:
 #   SEXP ss_R_emcluster(SEXP x, SEXP n, SEXP p, SEXP nclass, SEXP p_LTSigma,
 #                       SEXP pi, SEXP Mu, SEXP LTSigma, SEXP em_iter,
-#                       SEXP em_eps, SEXP lab, SEXP labK)
+#                       SEXP em_eps, SEXP lab)
 # Input:
 #   lab: SEXP[1], -1 for points with unknown clusters;
 #                 0,..,(labK-1) for known.
@@ -161,8 +161,7 @@ emcluster.wt <- function(x, emobj, lab = NULL,
                  as.double(emobj$LTSigma),
                  as.integer(EMC$em.iter),
                  as.double(EMC$em.eps),
-                 as.integer(lab),
-                 as.integer(labK))
+                 as.integer(lab))
   }
 
   ret$pi <- ret$pi / sum(ret$pi)

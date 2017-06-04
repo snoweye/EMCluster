@@ -1,3 +1,8 @@
+2017-06-04: Ver. 0.2-8
+  * Fix UNPROTECT problems. DO NOT add UNPROTECT(*) to
+    EMCluster/src/it_R_emptr.c. It will be done outside of that call by the
+    caller. It is only to allocated space which is pointed by a poninter!
+
 2017-04-07: Ver. 0.2-7
   * Add UNPROTECT(8); to EMCluster/src/it_R_emptr.c.
 

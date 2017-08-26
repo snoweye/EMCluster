@@ -25,13 +25,13 @@ Jaccard.Index(x, y)
   Wei-Chen Chen \email{wccsnow@gmail.com} and Ranjan Maitra.
 }
 \examples{
-\dontrun{
+%\dontrun{
 library(EMCluster, quietly = TRUE)
 
 x.id <- c(1, 1, 1, 0, 0, 0, 3, 3, 3)
 y.id <- c(0, 1, 0, 1, 1, 1, 0, 1, 1)
 
 Jaccard.Index(x.id, y.id)
-}
+%}
 }
 \keyword{summary}

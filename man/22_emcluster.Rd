@@ -65,7 +65,7 @@ simple.init(x, nclass = 1)
   \code{\link{.EMControl}}.
 }
 \examples{
-\dontrun{
+%\dontrun{
 library(EMCluster, quietly = TRUE)
 set.seed(1234)
 x1 <- da1$da
@@ -76,6 +76,6 @@ summary(emobj)
 
 ret <- emcluster(x1, emobj, assign.class = TRUE)
 summary(ret)
-}
+%}
 }
 \keyword{programming}

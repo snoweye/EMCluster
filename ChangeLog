@@ -1,3 +1,6 @@
+2018-01-14: Ver. 0.2-9
+  * Replace recolor.r
+
 2017-06-04: Ver. 0.2-8
   * Fix UNPROTECT problems. DO NOT add UNPROTECT(*) to
     EMCluster/src/it_R_emptr.c. It will be done outside of that call by the

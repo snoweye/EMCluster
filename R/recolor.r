@@ -6,13 +6,14 @@ rematch <- function(tg.id, cl.id) {
   ## standalone function.
   ##
   ## written Ranjan Maitra, Ames, IA 50011-1210, 2015/10/26
-
-  which.max.matrix <- function(mat) (which(x = mat == max(mat), arr.ind=T))
   
+  which.max.matrix <- function(mat) (which(x = mat == max(mat), arr.ind=T))
+
   cl.id.tmp <- recode(cl.id) - min(cl.id) + 1
   tg.id.tmp <- recode(tg.id) - min(tg.id) + 1
   orig.cl.id <- sort(unique(cl.id))
-  orig.tg.id <- sort(unique(tg.id))
+  orig.tg.id <- sort(unique(tg.id)) 
+  
   xtabs <- table(tg.id.tmp, cl.id.tmp)
   ncl <- max(cl.id.tmp)
   ntg <- max(tg.id.tmp)
@@ -32,7 +33,7 @@ rematch <- function(tg.id, cl.id) {
     else {
       if (ncl == ntg) {
         id.cl <- c(id.cl, cl.idx)
-        tg.cl <- c(tg.cl, tg.idx)
+        id.tg <- c(id.tg, tg.idx)
       }
       else {
         ind <- which.max(xtab)
@@ -56,7 +57,7 @@ rematch <- function(tg.id, cl.id) {
 
 recode <- function(id) {
   ##
-  ## This function reoders classes to eliminate group ids without any members.
+  ## This function reorders classes to eliminate group ids without any members.
   ## It is assumed that the group ids are integers
   ## Written Ranjan Maitra, Ames, IA 50011-1210, 2015/10/26
   ##

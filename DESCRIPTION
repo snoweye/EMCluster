@@ -1,6 +1,6 @@
 Package: EMCluster
-Version: 0.2-8
-Date: 2017-08-25
+Version: 0.2-9
+Date: 2018-01-14
 Title: EM Algorithm for Model-Based Clustering of Finite Mixture
         Gaussian Distribution
 Authors@R: c(person("Wei-Chen", "Chen", role = c("aut", "cre"), email =

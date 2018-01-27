@@ -1,3 +1,6 @@
+2018-01-27: Ver. 0.3-0
+  * Reordering LAPACK_LIBS, BLAS_LIBS, and FLIBS in "src/Makevars".
+
 2018-01-14: Ver. 0.2-9
   * Replace recolor.r
 

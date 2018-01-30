@@ -50,12 +50,12 @@ em.icl.bic(x, emobj = NULL, pi = NULL, Mu = NULL, LTSigma = NULL)
   \code{\link{init.EM}}.
 }
 \examples{
-\dontrun{
+%\dontrun{
 library(EMCluster, quietly = TRUE)
 x2 <- da2$da
 
 emobj <- list(pi = da2$pi, Mu = da2$Mu, LTSigma = da2$LTSigma)
 em.ic(x2, emobj = emobj)
-}
+%}
 }
 \keyword{tool}

@@ -55,7 +55,7 @@ logL(x, emobj = NULL, pi = NULL, Mu = NULL, LTSigma = NULL)
   \code{\link{init.EM}}, \code{\link{emcluster}}.
 }
 \examples{
-\dontrun{
+%\dontrun{
 library(EMCluster, quietly = TRUE)
 x2 <- da2$da
 x3 <- da3$da
@@ -71,6 +71,6 @@ dmixmvn3 <- dmixmvn(x3, emobj3)
 
 dlmvn(da2$da[1,], da2$Mu[1,], da2$LTSigma[1,])
 log(dmvn(da2$da[1,], da2$Mu[1,], da2$LTSigma[1,]))
-}
+%}
 }
 \keyword{utility}

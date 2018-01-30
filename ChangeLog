@@ -1,3 +1,6 @@
+2018-01-30: Ver. 0.3-0
+  * Adjusting for CRAN requests.
+
 2018-01-27: Ver. 0.3-0
   * Reordering LAPACK_LIBS, BLAS_LIBS, and FLIBS in "src/Makevars".
 

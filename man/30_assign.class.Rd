@@ -46,7 +46,7 @@
   \code{\link{init.EM}}, \code{\link{emcluster}}.
 }
 \examples{
-\dontrun{
+%\dontrun{
 library(EMCluster, quietly = TRUE)
 set.seed(1234)
 x2 <- da2$da
@@ -54,6 +54,6 @@ x2 <- da2$da
 ret <- init.EM(x2, nclass = 2)
 ret.new <- assign.class(x2, ret, return.all = FALSE)
 str(ret.new)
-}
+%}
 }
 \keyword{tool}

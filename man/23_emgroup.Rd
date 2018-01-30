@@ -36,7 +36,7 @@ emgroup(x, nclass = 1, EMC = .EMC)
   \code{\link{init.EM}}, \code{\link{.EMControl}}.
 }
 \examples{
-\dontrun{
+%\dontrun{
 library(EMCluster, quietly = TRUE)
 set.seed(1234)
 x1 <- da1$da
@@ -46,6 +46,6 @@ summary(emobj)
 
 ret.0 <- starts.via.svd(x1, nclass = 10, method = "kmeans")
 summary(ret.0)
-}
+%}
 }
 \keyword{programming}

@@ -6,7 +6,11 @@ Title: EM Algorithm for Model-Based Clustering of Finite Mixture
 Authors@R: c(person("Wei-Chen", "Chen", role = c("aut", "cre"), email =
         "wccsnow@gmail.com"),
         person("Ranjan", "Maitra", role = "aut"),
-        person("Volodymyr", "Melnykov", role = "ctb"))
+        person("Volodymyr", "Melnykov", role = "ctb"),
+	person("Dan", "Nettleton", role = "ctb"),
+	person("David", "Faden", role = "ctb"),
+	person("Rouben", "Rostamian", role = "ctb"),
+        person("R Development Core team", role = c("ctb", "cph")))
 Depends: R (>= 3.0.1), MASS, Matrix
 Enhances: PPtree, RColorBrewer
 LazyLoad: yes

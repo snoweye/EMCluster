@@ -64,12 +64,12 @@
   \code{\link{init.EM}}, \code{\link{emcluster}}.
 }
 \examples{
-\dontrun{
+%\dontrun{
 library(EMCluster, quietly = TRUE)
 
 .EMC <- .EMControl()
 .EMC.Rnd <- .EMControl(short.eps = Inf)
 .EMC.Rndp <- .EMControl(fixed.iter = 5)
-}
+%}
 }
 \keyword{programming}

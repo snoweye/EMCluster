@@ -1,7 +1,11 @@
-2018-01-30: Ver. 0.3-0
+2018-03-11: Ver. 0.2-11
+  * Return conv.iter and conv.eps for emcluster(), emgroup(), and their
+    semi-supervise version if any.
+
+2018-01-30: Ver. 0.2-10
   * Adjusting for CRAN requests.
 
-2018-01-27: Ver. 0.3-0
+2018-01-27: Ver. 0.2-10
   * Reordering LAPACK_LIBS, BLAS_LIBS, and FLIBS in "src/Makevars".
 
 2018-01-14: Ver. 0.2-9

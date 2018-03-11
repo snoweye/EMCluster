@@ -69,14 +69,16 @@ void mod_shortems(int n, int p, int nclass, double *pi, double **X,
    This is a version for C.
 */
 int rand_EM(double **x, int n, int p, int nclass, double *pi, double **Mu,
-    double **LTSigma, double *llhdval, int *nc, int shortiter, int fixediter){
+    double **LTSigma, double *llhdval, int *nc, int shortiter, int fixediter,
+    int *conv_iter, double *conv_eps){
   if(nclass == 1){
     meandispersion_MLE(x, n, p, Mu[0], LTSigma[0]);
     *llhdval = -0.5 * n * p - 0.5 * n * log(determinant(LTSigma[0], p)) -
                0.5 * n * p * log(2 * PI);
   } else {
     mod_shortems(n, p, nclass, pi, x, Mu, LTSigma, shortiter, fixediter);
-    emcluster(n, p, nclass, pi, x, Mu, LTSigma, 1000, 0.0001, llhdval);
+    emcluster(n, p, nclass, pi, x, Mu, LTSigma, 1000, 0.0001, llhdval,
+              conv_iter, conv_eps);
   } 
 
   return 0;

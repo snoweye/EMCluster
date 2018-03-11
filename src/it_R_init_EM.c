@@ -46,6 +46,8 @@
        nc: SEXP[R_nclass], number of observations in each class.
        class: SEXP[R_n], class id's for all observations
               starting from 0 to (R_nclass - 1).
+       conv_iter: SEXP[1], convergent iterations.
+       conv_eps: SEXP[1], convergent tolerance.
 */
 EMPTR allocate_emptr(void){
   EMPTR emptr = (EMPTR) malloc(sizeof(struct emptr));
@@ -77,6 +79,7 @@ SEXP R_init_EM(SEXP R_X, SEXP R_n, SEXP R_p, SEXP R_nclass,
           *emptr->C_short_iter, *emptr->C_short_eps, *emptr->C_fixed_iter,
 	  *emptr->C_n_candidate,
           *emptr->C_EM_iter, *emptr->C_EM_eps,
+          emptr->C_conv_iter, emptr->C_conv_eps,
           emptr->C_lab, *emptr->C_labK,
           *emptr->C_init_method);
 

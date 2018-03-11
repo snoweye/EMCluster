@@ -23,6 +23,8 @@
 #     Mu: SEXP[nclass, p], means of MVNs.
 #     LTSigma: SEXP[nclass, p * (p + 1) / 2], lower triangular Sigma matrices.
 #     llhdval: SEXP[1], log likelihood value.
+#     conv_iter: SEXP[1], convergent iterations.
+#     conv_eps: SEXP[1], convergent tolerance.
 # Output in R:
 #     n: SEXP[1], number of observations.
 #     p: SEXP[1], number of dimersions.

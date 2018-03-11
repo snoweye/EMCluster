@@ -10,7 +10,7 @@
 #include<Rinternals.h>
 
 
-/* This function is coded in "src/emcluster.c".
+/* This function is coded in "src/M_emcluster.c".
    Input:
      n: int[1], number of observations.
      p: int[1], number of dimersions.
@@ -24,10 +24,11 @@
      eps: double[1], tolerance for emclust(), 1e-4 by default.		#em_eps
      *llhdval: double[1], log likelihood value.
    Output:
-     *pi, **Mu, **LTSigma, *llhdval.
+     *pi, **Mu, **LTSigma, *llhdval, *conv_iter, *conv_eps.
 */
 void emcluster(int n,int p,int k,double *pi,double **X,double **Mu, 
-               double **LTSigma,int maxiter,double eps,double *llhdval);
+               double **LTSigma,int maxiter,double eps,double *llhdval,
+               int *conv_iter,double *conv_eps);
 
 /* Allocate a pointer array with double precision. See "src/R_tool.c". */
 double** allocate_double_array(int n);
@@ -54,20 +55,22 @@ double** allocate_double_array(int n);
        LTSigma: SEXP[R_nclass, R_p * (R_p + 1) / 2], lower triangular sigma
                 matrices.
        llhdval: SEXP[1], log likelihood value.
+       conv_iter: SEXP[1], convergent iterations.
+       conv_eps: SEXP[1], convergent tolerance.
 */
 SEXP R_emcluster(SEXP R_x, SEXP R_n, SEXP R_p, SEXP R_nclass, SEXP R_p_LTSigma,
     SEXP R_pi, SEXP R_Mu, SEXP R_LTSigma, SEXP R_em_iter, SEXP R_em_eps){
   /* Declare variables for calling C. */
-  double **C_x, *C_pi, **C_Mu, **C_LTSigma, *C_llhdval, *C_em_eps;
-  int *C_n, *C_p, *C_nclass, *C_p_LTSigma, *C_em_iter;
+  double **C_x, *C_pi, **C_Mu, **C_LTSigma, *C_llhdval, *C_em_eps, *C_conv_eps;
+  int *C_n, *C_p, *C_nclass, *C_p_LTSigma, *C_em_iter, *C_conv_iter;
 
   /* Declare variables for R's returning. */
-  SEXP pi, Mu, LTSigma, llhdval, ret, ret_names;
+  SEXP pi, Mu, LTSigma, llhdval, conv_iter, conv_eps, ret, ret_names;
 
   /* Declare variables for processing. */
   double *tmp_1, *tmp_2;
   int i, j, tl;
-  char *names[4] = {"pi", "Mu", "LTSigma", "llhdval"};
+  char *names[6] = {"pi", "Mu", "LTSigma", "llhdval", "conv.iter", "conv.eps"};
 
   /* Set initial values. */
   C_n = INTEGER(R_n);
@@ -80,16 +83,20 @@ SEXP R_emcluster(SEXP R_x, SEXP R_n, SEXP R_p, SEXP R_nclass, SEXP R_p_LTSigma,
   PROTECT(Mu = allocVector(REALSXP, *C_nclass * *C_p));
   PROTECT(LTSigma = allocVector(REALSXP, *C_nclass * *C_p_LTSigma));
   PROTECT(llhdval = allocVector(REALSXP, 1));
-  PROTECT(ret = allocVector(VECSXP, 4));
-  PROTECT(ret_names = allocVector(STRSXP, 4));
+  PROTECT(conv_iter  = allocVector(INTSXP, 1));
+  PROTECT(conv_eps  = allocVector(REALSXP, 1));
+  PROTECT(ret = allocVector(VECSXP, 6));
+  PROTECT(ret_names = allocVector(STRSXP, 6));
 
   i = 0;
   SET_VECTOR_ELT(ret, i++, pi);
   SET_VECTOR_ELT(ret, i++, Mu);
   SET_VECTOR_ELT(ret, i++, LTSigma);
   SET_VECTOR_ELT(ret, i++, llhdval);
+  SET_VECTOR_ELT(ret, i++, conv_iter);
+  SET_VECTOR_ELT(ret, i++, conv_eps);
 
-  for(i = 0; i < 4; i++){
+  for(i = 0; i < 6; i++){
     SET_STRING_ELT(ret_names, i, mkChar(names[i])); 
   }
   setAttrib(ret, R_NamesSymbol, ret_names);
@@ -118,6 +125,8 @@ SEXP R_emcluster(SEXP R_x, SEXP R_n, SEXP R_p, SEXP R_nclass, SEXP R_p_LTSigma,
   C_llhdval = REAL(llhdval);
   C_em_iter = INTEGER(R_em_iter);
   C_em_eps = REAL(R_em_eps);
+  C_conv_iter = INTEGER(conv_iter);
+  C_conv_eps = REAL(conv_eps);
 
   /* Copy R objects to input oebjects for C. */
   tmp_1 = REAL(R_pi);
@@ -141,13 +150,13 @@ SEXP R_emcluster(SEXP R_x, SEXP R_n, SEXP R_p, SEXP R_nclass, SEXP R_p_LTSigma,
 
   /* Compute. */
   emcluster(*C_n, *C_p, *C_nclass, C_pi, C_x, C_Mu, C_LTSigma,
-            *C_em_iter, *C_em_eps, C_llhdval);
+            *C_em_iter, *C_em_eps, C_llhdval, C_conv_iter, C_conv_eps);
 
   /* Free memory and release protectation. */
   free(C_x);
   free(C_Mu);
   free(C_LTSigma);
-  UNPROTECT(6);
+  UNPROTECT(8);
 
   return(ret);
 } /* End of R_emcluster(). */

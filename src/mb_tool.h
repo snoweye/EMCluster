@@ -62,7 +62,8 @@ void estep_unnorm_dlmvn(int n, int p, int k, double **X, double **Gamma,
     double *pi, double **Mu, double **LTSigma);
 void norm_gamma(int n, int k, double **Gamma, double *pi);
 void emcluster(int n, int p, int k, double *pi, double **X, double **Mu, 
-    double **LTSigma, int maxiter, double eps, double *llhdval);
+    double **LTSigma, int maxiter, double eps, double *llhdval,
+    int *conv_iter, double *conv_eps);
 
 /* Function in "M_init_other.c". */
 int shortemcluster(int n, int p, int k, double *pi, double **X,
@@ -86,7 +87,8 @@ double** allocate_double_array(int n);
 /* Functions in "M_emgroup.c". */
 int M_emgroup(double **x,int n,int p,int nclass,double *pi,double **Mu,
               double **LTSigma,double *llhdval,int *nc,int *class,
-              double alpha, int em_iter, double em_eps);
+              double alpha, int em_iter, double em_eps,
+              int *conv_iter, double *conv_eps);
 
 /* Functions in "mb_em_EM.c". */
 void shortems_mb(int n, int p, int nclass, double *pi, double **X, double **Mu,  

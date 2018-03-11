@@ -10,7 +10,7 @@ void init_EM(double **X, double *pi, double **Mu, double **LTSigma,
     double *llhdval,
     int n, int p, int nclass, int *nc, int *class,
     int short_iter, double short_eps, int fixed_iter, int n_candidate,
-    int EM_iter, double EM_eps,
+    int EM_iter, double EM_eps, int *conv_iter, double *conv_eps,
     int *lab, int labK,
     int init_method){
   int j;
@@ -121,7 +121,8 @@ void init_EM(double **X, double *pi, double **Mu, double **LTSigma,
        init_method == 11 || init_method == 12){
 //       init_method == 11 || init_method == 12 ||
 //       init_method == 21 || init_method == 22){
-      emcluster(n, p, nclass, pi, X, Mu, LTSigma, EM_iter, EM_eps, llhdval);
+      emcluster(n, p, nclass, pi, X, Mu, LTSigma, EM_iter, EM_eps, llhdval,
+                conv_iter, conv_eps);
       assign(n, p, nclass, X, pi, Mu, LTSigma, class, nc);
 /* Semi-supervised clustering. */
     } else if(init_method == 101 || init_method == 102 ||

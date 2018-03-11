@@ -40,7 +40,8 @@ void shortems_mb(int n,int p,int nclass,double *pi,double **X,double **Mu,
 
 /* This is the model-based em.EM. */
 int mb_em_EM(double **x, int n, int p, int nclass, double *pi, double **Mu,
-    double **LTSigma, double *llhdval, int shortiter, double shorteps){
+    double **LTSigma, double *llhdval, int shortiter, double shorteps,
+    int *conv_iter, double *conv_eps){
   if(nclass == 1){
     meandispersion_MLE(x, n, p, Mu[0], LTSigma[0]);
     *llhdval = -0.5 * n * p - 0.5 * n * log(determinant(LTSigma[0], p)) -
@@ -48,7 +49,8 @@ int mb_em_EM(double **x, int n, int p, int nclass, double *pi, double **Mu,
   }
   else {
     shortems_mb(n, p, nclass, pi, x, Mu, LTSigma, shortiter, shorteps);
-    emcluster(n, p, nclass, pi, x, Mu, LTSigma, 1000, 0.0001, llhdval);
+    emcluster(n, p, nclass, pi, x, Mu, LTSigma, 1000, 0.0001, llhdval,
+              conv_iter, conv_eps);
   } 
 
   return 0;

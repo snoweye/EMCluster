@@ -8,8 +8,8 @@
 typedef struct emptr{
     double **C_X, *C_pi, **C_Mu, **C_LTSigma, *C_llhdval;
     int *C_n, *C_p, *C_nclass, *C_nc, *C_class;
-    int *C_short_iter, *C_fixed_iter, *C_n_candidate, *C_EM_iter;
-    double *C_short_eps, *C_EM_eps;
+    int *C_short_iter, *C_fixed_iter, *C_n_candidate, *C_EM_iter, *C_conv_iter;
+    double *C_short_eps, *C_EM_eps, *C_conv_eps;
     int *C_lab, *C_labK;
     int *C_init_method;
     int C_protect_length;
@@ -27,7 +27,7 @@ void init_EM(double **x, double *pi, double **Mu, double **LTSigma,
     double *llhdval,
     int n, int p, int nclass, int *nc, int *class,
     int short_iter, double short_eps, int fixed_iter, int n_candidate,
-    int EM_iter, double EM_eps,
+    int EM_iter, double EM_eps, int *conv_iter, double *conv_eps,
     int *lab, int labK,
     int init_method);
 

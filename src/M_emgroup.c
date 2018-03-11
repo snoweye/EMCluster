@@ -9,7 +9,8 @@
 /* Main function for emgroup(). See "src/R_M_emgroup.c" for details */
 int M_emgroup(double **x,int n,int p,int nclass,double *pi,double **Mu,
     double **LTSigma,double *llhdval,int *nc,int *class,
-    double alpha, int em_iter, double em_eps){
+    double alpha, int em_iter, double em_eps,
+    int *conv_iter, double *conv_eps){
   int j,flag=0;
   double like=0.0;
   
@@ -29,7 +30,8 @@ int M_emgroup(double **x,int n,int p,int nclass,double *pi,double **Mu,
   else {
     if(!starts_via_svd(n,p,Mu,x,nclass,nc,pi,class,LTSigma,alpha,1))      {
       for(j=0;j<nclass;j++) pi[j]=nc[j]/(double)n;
-      emcluster(n,p,nclass,pi,x,Mu,LTSigma,em_iter,em_eps,&like);
+      emcluster(n,p,nclass,pi,x,Mu,LTSigma,em_iter,em_eps,&like,
+                conv_iter,conv_eps);
       assign(n,p,nclass,x,pi,Mu,LTSigma,class,nc);
     }
     else flag=1;

@@ -29,6 +29,9 @@ print.summary.emret <- function(x,
          ", flag = ", emret$flag,
          ", total parameters = ", emret$tp,
          ",\n")
+  my.cat(" conv.iter = ", emret$conv.iter,
+         ", conv.eps = ", emret$conv.eps,
+         ",\n")
   if(!is.null(emret$logL)){
     my.cat(" logL = ", my.format(emret$logL, digits = digits),
            ", AIC = ", my.format(emret$AIC, digits = digits),
@@ -52,6 +55,9 @@ print.emret <- function(x,
          ", flag = ", emret$flag,
          ", logL = ", my.format(emret$llhdval, digits = digits),
          ".\n")
+  my.cat(" conv.iter = ", emret$conv.iter,
+         ", conv.eps = ", emret$conv.eps,
+         ",\n")
   my.cat("nc: \n")
   my.print(emret$nc, digits = digits)
   my.cat("pi: \n")

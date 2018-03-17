@@ -8,7 +8,8 @@
 
 /* Modified shortems() for model-based initializer. */
 void mod_shortems_mb(int n, int p, int nclass, double *pi, double **X,
-    double **Mu, double **LTSigma, int maxshortiter, int fixed_iter){
+    double **Mu, double **LTSigma, int maxshortiter, int fixed_iter,
+    int *conv_iter, double *conv_eps){
   int i, iter, totiter = 0, n_par = p * (p + 1) / 2;
   double *oldpi, **oldMu, **oldLTSigma, oldllh = -Inf, llhval;
 
@@ -22,7 +23,7 @@ void mod_shortems_mb(int n, int p, int nclass, double *pi, double **X,
     iter = maxshortiter - totiter;
     if(fixed_iter > iter) fixed_iter = iter;
     iter = mod_shortemcluster(n, p, nclass, oldpi, X, oldMu, oldLTSigma,
-                              fixed_iter, &llhval);
+                              fixed_iter, &llhval, conv_iter, conv_eps);
     
     if(llhval >= oldllh){
       oldllh = llhval;
@@ -52,7 +53,8 @@ int mb_rand_EM(double **x, int n, int p, int nclass, double *pi, double **Mu,
     *llhdval = -0.5 * n * p - 0.5 * n * log(determinant(LTSigma[0], p)) -
                0.5 * n * p * log(2 * PI);
   } else {
-    mod_shortems_mb(n, p, nclass, pi, x, Mu, LTSigma, shortiter, fixed_iter);
+    mod_shortems_mb(n, p, nclass, pi, x, Mu, LTSigma, shortiter, fixed_iter,
+                    conv_iter, conv_eps);
     emcluster(n, p, nclass, pi, x, Mu, LTSigma, 1000, 0.0001, llhdval,
               conv_iter, conv_eps);
   } 

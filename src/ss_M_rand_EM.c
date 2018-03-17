@@ -23,16 +23,18 @@
      fixediter: int[1], number of rand iterations, 1 by default.
      em_iter: int[1], number of emclust() iterations, 1000 by default.
      em_eps: double[1], epsilon for emclust() iterations, 1e-4 by default.
+     conv_iter: int[1], number of convertent iterations.
+     conv_eps: double[1], epsilon at convertent iterations.
      lab: int[n], -1 for points with unknown clusters; 0,..,(labK-1) for known.
      labK: int[1], the number of known clusters.
    Output:
      flag: int[1], a returned flag from rand_EM().
-     *pi, **Mu, **LTSigma, *llhdval, *nc, *class.
+     *pi, **Mu, **LTSigma, *llhdval, *nc, *class, *conv_iter, *conv_eps.
 */
 int ss_M_rand_EM(double **x, int n, int p, int nclass, double *pi,
     double **Mu, double **LTSigma, double *llhdval, int *nc, int *class,
     int shortiter, int fixediter,
-    int em_iter, double em_eps,
+    int em_iter, double em_eps, int *conv_iter, double *conv_eps,
     int *lab, int labK){
   int j;
 
@@ -45,10 +47,10 @@ int ss_M_rand_EM(double **x, int n, int p, int nclass, double *pi,
                0.5 * n * p * log(2 * PI);
   } else{
     ss_mod_shortems(n, p, nclass, pi, x, Mu, LTSigma,
-                    shortiter, fixediter,
+                    shortiter, fixediter, conv_iter, conv_eps,
                     lab, labK);
     ss_emcluster(n, p, nclass, pi, x, Mu, LTSigma, em_iter, em_eps, llhdval,
-                 lab);
+                 conv_iter, conv_eps, lab);
     ss_assign(n, p, nclass, x, pi, Mu, LTSigma, class, nc, lab);
   } 
 

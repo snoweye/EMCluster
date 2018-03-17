@@ -50,7 +50,8 @@ void ss_norm_gamma(int n, int k, double **Gamma, double *pi, int *lab){
 
 /* Created by Wei-Chen Chen on 2009/06/16. */
 void ss_emcluster(int n, int p, int k, double *pi, double **X, double **Mu, 
-    double **LTSigma, int maxiter, double eps, double *llhdval, int *lab){
+    double **LTSigma, int maxiter, double eps, double *llhdval,
+    int *conv_iter, double *conv_eps, int *lab){
   int iter, i, n_par =  p * (p + 1) / 2;
   double *backup_pi, **backup_Mu, **backup_LTSigma;
   double **gamm, llhd, oldllhd;
@@ -81,12 +82,15 @@ void ss_emcluster(int n, int p, int k, double *pi, double **X, double **Mu,
       cpy(backup_Mu, k, p, Mu);
       cpy(backup_LTSigma, k, n_par, LTSigma);
       llhd = oldllhd;
+      iter--;
       break;
     }
 
     iter++;
-  } while((fabs((oldllhd - llhd) / oldllhd) > eps) && (iter < maxiter));
+    *conv_eps = fabs((oldllhd - llhd) / oldllhd);
+  } while((*conv_eps > eps) && (iter < maxiter));
   *llhdval = llhd;
+  *conv_iter = iter;
 
   FREE_VECTOR(backup_pi);
   FREE_MATRIX(backup_Mu);

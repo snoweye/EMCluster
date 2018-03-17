@@ -4,7 +4,7 @@
 # Call:
 #   SEXP R_init_EM(SEXP x, SEXP n, SEXP p, SEXP nclass,
 #                  SEXP short_iter, SEXP short_eps, SEXP fixed_iter,
-#                  SEXP EM_iter, SEXP EM_eps,
+#                  SEXP em_iter, SEXP em_eps,
 #                  SEXP lab, SEXP labK,
 #                  SEXP init_method)
 # Input:
@@ -16,8 +16,8 @@
 #   short_eps: SEXP[1], a tolerance of short em, 1e-2 by default.		# short.eps
 #   fixed_iter: SEXP[1], a number of rand iterations, 1 by default.		# fixed.iter
 #   n_candidate: SEXP[1], a number of candidates, 5 by default.
-#   EM_iter: SEXP[1], a number of EM iterations, 1000 by default.		# EM.iter
-#   EM_eps: SEXP[1], a tolerance of EM, 1e-4 by default.			# EM.eps
+#   em_iter: SEXP[1], a number of EM iterations, 1000 by default.		# em.iter
+#   em_eps: SEXP[1], a tolerance of EM, 1e-4 by default.			# em.eps
 #   lab: SEXP[n], -1 for points with unknown clusters;
 #                 0,..,(labK-1) for known.
 #   labK: SEXP[1], the number of known clusters.
@@ -92,8 +92,8 @@ init.EM <- function(x, nclass = 1, lab = NULL, EMC = .EMC,
                  as.double(EMC$short.eps),
                  as.integer(EMC$fixed.iter),
                  as.integer(EMC$n.candidate),
-                 as.integer(EMC$EM.iter),
-                 as.double(EMC$EM.eps),
+                 as.integer(EMC$em.iter),
+                 as.double(EMC$em.eps),
                  as.integer(lab),
                  as.integer(labK),
                  as.integer(init.code))

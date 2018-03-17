@@ -24,6 +24,8 @@
 #     LTSigma: SEXP[nclass, p * (p + 1) / 2], lower triangular Sigma matrices.
 #     llhdval: SEXP[1], log likelihood value.
 #     iter: SEXP[1], iterations used in short em.
+#     conv.iter: SEXP[1], convergent iterations.
+#     conv.eps: SEXP[1], convergent tolerance.
 # Output in R:
 #     n: SEXP[1], number of observations.
 #     p: SEXP[1], number of dimersions.

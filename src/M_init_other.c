@@ -18,7 +18,8 @@ double lnlikelihood_gamma(int n, int k, double **Gamma, double *pi);
 
 
 int shortemcluster(int n, int p, int k, double *pi, double **X,
-    double **Mu, double **LTSigma, int maxiter, double eps, double *llhdval){
+    double **Mu, double **LTSigma, int maxiter, double eps, double *llhdval,
+    int *conv_iter, double *conv_eps){
   int iter, i, n_par =  p * (p + 1) / 2;
   double *backup_pi, **backup_Mu, **backup_LTSigma;
   double **gamm, llhd, oldllhd, llh0;
@@ -49,12 +50,15 @@ int shortemcluster(int n, int p, int k, double *pi, double **X,
       cpy(backup_Mu, k, p, Mu);
       cpy(backup_LTSigma, k, n_par, LTSigma);
       llhd = oldllhd;
+      iter--;
       break;
     }
 
     iter++;
-  } while((fabs((oldllhd - llhd) / (llh0 - llhd)) > eps) && (iter < maxiter));
+    *conv_eps = fabs((oldllhd - llhd) / (llh0 - llhd));
+  } while((*conv_eps > eps) && (iter < maxiter));
   *llhdval = llhd;
+  *conv_iter = iter;
 
   FREE_VECTOR(backup_pi);
   FREE_MATRIX(backup_Mu);

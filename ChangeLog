@@ -1,3 +1,6 @@
+2018-03-17: Ver. 0.2-11
+  * Fix conv.iter and conv.eps for most C functions.
+
 2018-03-11: Ver. 0.2-11
   * Return conv.iter and conv.eps for emcluster(), emgroup(), and their
     semi-supervise version if any.

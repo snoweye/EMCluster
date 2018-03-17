@@ -44,7 +44,7 @@ exhaust.EM(x, nclass = 1, lab = NULL,
   tolerance controlled by \code{.EMC$short.eps} and try several random
   initializations controlled by \code{.EMC$short.iter}, while long-EM
   starts from the best short-EM result (in terms of log likelihood) and
-  run to convergence with a tight tolerance controlled by \code{.EMC$EM.eps}.
+  run to convergence with a tight tolerance controlled by \code{.EMC$em.eps}.
 
   The \code{rand.EM} also has two steps: first randomly pick several
   random initializations controlled by \code{.EMC$short.iter}, and

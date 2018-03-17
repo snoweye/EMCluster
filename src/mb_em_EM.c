@@ -8,7 +8,8 @@
 
 /* shortems() for model-based initializer. */
 void shortems_mb(int n,int p,int nclass,double *pi,double **X,double **Mu,  
-    double **LTSigma,int maxshortiter,double shorteps){
+    double **LTSigma,int maxshortiter,double shorteps,
+    int *conv_iter,double *conv_eps){
   int i, iter, totiter = 0, n_par = p * (p + 1) / 2;
   double *oldpi, **oldMu, **oldLTSigma, oldllh = -Inf, llhval;
 
@@ -21,7 +22,7 @@ void shortems_mb(int n,int p,int nclass,double *pi,double **X,double **Mu,
 
     iter = maxshortiter - totiter;
     iter = shortemcluster(n, p, nclass, oldpi, X, oldMu, oldLTSigma, iter,
-                          shorteps, &llhval);
+                          shorteps, &llhval, conv_iter, conv_eps);
     if(llhval >= oldllh){
       oldllh = llhval;
       cpy(oldMu, nclass, p, Mu);
@@ -48,7 +49,8 @@ int mb_em_EM(double **x, int n, int p, int nclass, double *pi, double **Mu,
                0.5 * n * p * log(2 * PI);
   }
   else {
-    shortems_mb(n, p, nclass, pi, x, Mu, LTSigma, shortiter, shorteps);
+    shortems_mb(n, p, nclass, pi, x, Mu, LTSigma, shortiter, shorteps,
+                conv_iter, conv_eps);
     emcluster(n, p, nclass, pi, x, Mu, LTSigma, 1000, 0.0001, llhdval,
               conv_iter, conv_eps);
   } 

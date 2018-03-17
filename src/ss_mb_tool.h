@@ -11,7 +11,8 @@
 /* Functions in "ss_M_emculster.c". */
 void ss_norm_gamma(int n, int k, double **Gamma, double *pi, int *lab);
 void ss_emcluster(int n, int p, int k, double *pi, double **X, double **Mu, 
-    double **LTSigma, int maxiter, double eps, double *llhdval, int *lab);
+    double **LTSigma, int maxiter, double eps, double *llhdval,
+    int *conv_iter, double *conv_eps, int *lab);
 
 /* Functions in "ss_emculster.c". */
 void ss_estep(int n, int p, int k, double **X, double **Gamma, double *pi,
@@ -27,9 +28,11 @@ int ss_shortemcluster_org(int n, int p, int k, double *pi, double **X,
     double **Mu, double **LTSigma, int maxiter, double eps, double *llhdval,
     int *lab);
 int ss_shortemcluster(int n, int p, int k, double *pi, double **X, double **Mu,
-    double **LTSigma, int maxiter, double eps, double *llhdval, int *lab);
+    double **LTSigma, int maxiter, double eps, double *llhdval,
+    int *conv_iter, double *conv_eps, int *lab);
 int ss_shortems(int n, int p, int nclass, double *pi, double **X, double **Mu,  
-    double **LTSigma, int maxshortiter, double shorteps, int *lab, int labK);
+    double **LTSigma, int maxshortiter, double shorteps,
+    int *conv_iter, double *conv_eps, int *lab, int labK);
 
 /* Functions in "ss_initials.c". */
 void ss_assign(int n, int p, int k, double **X, double *pi, double **Mu,
@@ -42,7 +45,7 @@ void labInitMus(int n, int p, int labK, double **x, int *lab, double **Mu);
 /* Functions in "ss_mb_em_EM.c". */
 void ss_shortems_mb(int n, int p, int nclass, double *pi, double **X,
     double **Mu, double **LTSigma, int maxshortiter, double shorteps,
-    int *lab, int labK);
+    int *conv_iter, double *conv_eps, int *lab, int labK);
 
 /* Functions in "ss_mb_init.c". */
 void ss_mb_init(double **X, int n, int p, int k, double *pi, double **Mu,
@@ -51,7 +54,7 @@ void ss_mb_init(double **X, int n, int p, int k, double *pi, double **Mu,
 /* Functions in "ss_mb_rand_EM.c". */
 void ss_mod_shortems_mb(int n, int p, int nclass, double *pi, double **X,
     double **Mu, double **LTSigma, int maxshortiter, int fixed_iter,
-    int *lab, int labK);
+    int *conv_iter, double *conv_eps, int *lab, int labK);
 
 /* Functions in "ss_mb_randomEMinit.c". */
 int ss_mb_assign_closest(double **X, int n, int p, int nclass, double **Mu,
@@ -61,16 +64,17 @@ void ss_mb_randomEMinit(double **x, int n, int p, int nclass, double *pi,
 
 /* Functions in "ss_rand_EM.c". */
 int ss_mod_shortemcluster(int n, int p, int k, double *pi, double **X,
-    double **Mu, double **LTSigma, int fixed_iter, double *llhdval, int *lab);
+    double **Mu, double **LTSigma, int fixed_iter, double *llhdval,
+    int *conv_iter, double *conv_eps, int *lab);
 void ss_mod_shortems(int n, int p, int nclass, double *pi, double **X,
     double **Mu, double **LTSigma, int maxshortiter, int fixed_iter,
-    int *lab, int labK);
+    int *conv_iter, double *conv_eps, int *lab, int labK);
 
 /* Functions in "ss_ac_EM.c". */
-int ss_shortems_ac(int n, int p, int nclass, double *pi, double **X,
-    double **Mu, double **LTSigma, int maxshortiter, double shorteps,
-    int n_candidate, int *lab, int labK);
-void ss_mod_shortems_ac(int n, int p, int nclass, double *pi, double **X,
-    double **Mu, double **LTSigma, int maxshortiter, int fixed_iter,
-    int n_candidate, int *lab, int labK);
+// int ss_shortems_ac(int n, int p, int nclass, double *pi, double **X,
+//     double **Mu, double **LTSigma, int maxshortiter, double shorteps,
+//     int n_candidate, int *lab, int labK);
+// void ss_mod_shortems_ac(int n, int p, int nclass, double *pi, double **X,
+//     double **Mu, double **LTSigma, int maxshortiter, int fixed_iter,
+//     int n_candidate, int *lab, int labK);
 

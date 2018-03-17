@@ -134,14 +134,15 @@ void emcluster(int n, int p, int k, double *pi, double **X, double **Mu,
       cpy(backup_Mu, k, p, Mu);
       cpy(backup_LTSigma, k, n_par, LTSigma);
       llhd = oldllhd;
+      iter--;
       break;
     }
 
     iter++;
-  } while((fabs((oldllhd - llhd) / oldllhd) > eps) && (iter < maxiter));
+    *conv_eps = fabs((oldllhd - llhd) / oldllhd);
+  } while((*conv_eps > eps) && (iter < maxiter));
   *llhdval = llhd;
   *conv_iter = iter;
-  *conv_eps = fabs((oldllhd - llhd) / oldllhd);
 
   FREE_VECTOR(backup_pi);
   FREE_MATRIX(backup_Mu);

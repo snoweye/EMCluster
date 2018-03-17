@@ -8,7 +8,8 @@
 #include "ss_mb_tool.h"
 
 int ss_mod_shortemcluster(int n, int p, int k, double *pi, double **X,
-    double **Mu, double **LTSigma, int fixed_iter, double *llhdval, int *lab){
+    double **Mu, double **LTSigma, int fixed_iter, double *llhdval,
+    int *conv_iter, double *conv_eps, int *lab){
   int iter;
   double **gamm;
 
@@ -19,6 +20,8 @@ int ss_mod_shortemcluster(int n, int p, int k, double *pi, double **X,
     mstep(X, n, p, k, pi, Mu, LTSigma, gamm);
     iter++;
   } while(iter < fixed_iter);
+  *conv_iter = iter;
+  *conv_eps = -1.0;
 
   *llhdval = lnlikelihood(n, p, k, pi, X, Mu, LTSigma);
   FREE_MATRIX(gamm);
@@ -29,7 +32,7 @@ int ss_mod_shortemcluster(int n, int p, int k, double *pi, double **X,
 
 void ss_mod_shortems(int n, int p, int nclass, double *pi, double **X,
     double **Mu, double **LTSigma, int maxshortiter, int fixed_iter,
-    int *lab, int labK){
+    int *conv_iter, double *conv_eps, int *lab, int labK){
   int i, j, iter, totiter = 0, n_par = p * (p + 1) / 2;
   int nonlab_total = 0, lab_index[n];
   double *oldpi, **oldMu, **oldLTSigma, oldllh = -Inf, llhval;
@@ -63,7 +66,7 @@ void ss_mod_shortems(int n, int p, int nclass, double *pi, double **X,
 
     if(fixed_iter > iter) fixed_iter = iter;
     iter = ss_mod_shortemcluster(n, p, nclass, oldpi, X, oldMu, oldLTSigma,
-                                 fixed_iter, &llhval, lab);
+                                 fixed_iter, &llhval, conv_iter, conv_eps, lab);
 
     if (llhval >= oldllh) {
       oldllh = llhval;
@@ -87,15 +90,16 @@ void ss_mod_shortems(int n, int p, int nclass, double *pi, double **X,
 */
 int ss_rand_EM(double **x, int n, int p, int nclass, double *pi, double **Mu,
     double **LTSigma, double *llhdval, int *nc, int shortiter, int fixediter,
-    int *lab, int labK){
+    int *conv_iter, double *conv_eps, int *lab, int labK){
   if(nclass == 1){
     meandispersion_MLE(x, n, p, Mu[0], LTSigma[0]);
     *llhdval = -0.5 * n * p - 0.5 * n * log(determinant(LTSigma[0], p)) -
                0.5 * n * p * log(2 * PI);
   } else {
     ss_mod_shortems(n, p, nclass, pi, x, Mu, LTSigma, shortiter, fixediter,
-                    lab, labK);
-    ss_emcluster(n, p, nclass, pi, x, Mu, LTSigma, 1000, 0.0001, llhdval, lab);
+                    conv_iter, conv_eps, lab, labK);
+    ss_emcluster(n, p, nclass, pi, x, Mu, LTSigma, 1000, 0.0001, llhdval,
+                 conv_iter, conv_eps, lab);
   } 
 
   return 0;

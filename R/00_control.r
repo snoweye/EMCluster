@@ -6,8 +6,8 @@
     short.eps = 1e-2,
     fixed.iter = 1,
     n.candidate = 3,
-    EM.iter = 1000,
-    EM.eps = 1e-6,
+    em.iter = 1000,
+    em.eps = 1e-6,
     exhaust.iter = 5
 ){
   list(
@@ -16,8 +16,8 @@
        short.eps = short.eps,
        fixed.iter = fixed.iter,
        n.candidate = n.candidate,
-       EM.iter = EM.iter,
-       EM.eps = EM.eps,
+       em.iter = em.iter,
+       em.eps = em.eps,
        exhaust.iter = exhaust.iter
       )
 }

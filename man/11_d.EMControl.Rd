@@ -16,7 +16,7 @@
 \usage{
 .EMControl(alpha = 0.99, short.iter = 200, short.eps = 1e-2,
     fixed.iter = 1, n.candidate = 3,
-    EM.iter = 1000, EM.eps = 1e-6, exhaust.iter = 5)
+    em.iter = 1000, em.eps = 1e-6, exhaust.iter = 5)
 .EMC
 .EMC.Rnd
 .EMC.Rndp
@@ -28,8 +28,8 @@
   \item{fixed.iter}{fixed iterations of EM for "RndEM" initialization,
                     default = 1.}
   \item{n.candidate}{reserved for other initialization methods (unimplemented).}
-  \item{EM.iter}{maximum number of long-EM steps, default = 1000.}
-  \item{EM.eps}{tolerance of long-EM steps, default = 1e-6.}
+  \item{em.iter}{maximum number of long-EM steps, default = 1000.}
+  \item{em.eps}{tolerance of long-EM steps, default = 1e-6.}
   \item{exhaust.iter}{number of iterations for "exhaustEM" initialization,
                       default = 5.}
 }
@@ -40,9 +40,9 @@
   \code{short.iter} and \code{short.eps} are used to control the
   short-EM iterations.
 
-  \code{EM.iter} and \code{EM.eps} are used to control the long-EM iterations.
+  \code{em.iter} and \code{em.eps} are used to control the long-EM iterations.
 
-  Moeover, \code{short.eps} and \code{EM.eps} are for checking convergence of
+  Moeover, \code{short.eps} and \code{em.eps} are for checking convergence of
   the iterations.
 }
 \value{

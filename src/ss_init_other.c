@@ -82,7 +82,7 @@ int ss_shortemcluster_org(int n, int p, int k, double *pi, double **X,
 /* Created by Wei-Chen Chen on 2009/06/16. */
 int ss_shortemcluster(int n, int p, int k, double *pi, double **X,
     double **Mu, double **LTSigma, int maxiter, double eps, double *llhdval,
-    int *lab){
+    int *conv_iter, double *conv_eps, int *lab){
   int iter, i, n_par =  p * (p + 1) / 2;
   double *backup_pi, **backup_Mu, **backup_LTSigma;
   double **gamm, llhd, oldllhd, llh0;
@@ -113,12 +113,15 @@ int ss_shortemcluster(int n, int p, int k, double *pi, double **X,
       cpy(backup_Mu, k, p, Mu);
       cpy(backup_LTSigma, k, n_par, LTSigma);
       llhd = oldllhd;
+      iter--;
       break;
     }
     
     iter++;
-  } while((fabs((oldllhd - llhd) / (llh0 - llhd)) > eps) && (iter < maxiter));
+    *conv_eps = fabs((oldllhd - llhd) / (llh0 - llhd));
+  } while((*conv_eps > eps) && (iter < maxiter));
   *llhdval = llhd;
+  *conv_iter = iter;
 
   FREE_VECTOR(backup_pi);
   FREE_MATRIX(backup_Mu);
@@ -129,7 +132,8 @@ int ss_shortemcluster(int n, int p, int k, double *pi, double **X,
 
 
 int ss_shortems(int n, int p, int nclass, double *pi, double **X, double **Mu,  
-    double **LTSigma, int maxshortiter, double shorteps, int *lab, int labK){
+    double **LTSigma, int maxshortiter, double shorteps,
+    int *conv_iter, double *conv_eps, int *lab, int labK){
   /*initializing as per Beiernacki, Celeaux, Govaert~(2003) */
 
   int i, j, iter, totiter = 0, n_par = p * (p + 1) / 2;
@@ -164,7 +168,7 @@ int ss_shortems(int n, int p, int nclass, double *pi, double **X, double **Mu,
                     lab, labK, nonlab_total, lab_index);
 
     iter = ss_shortemcluster(n, p, nclass, oldpi, X, oldMu, oldLTSigma, iter,
-                             shorteps, &llhval, lab);
+                             shorteps, &llhval, conv_iter, conv_eps, lab);
     if(llhval >= oldllh){
       int i;
       oldllh = llhval;
@@ -193,7 +197,7 @@ int ss_shortems(int n, int p, int nclass, double *pi, double **X, double **Mu,
   important fact to remember. */
 int ss_em_EM(double **x, int n, int p, int nclass, double *pi, double **Mu,
     double **LTSigma, double *llhdval, int *nc, int shortiter,
-    double shorteps, int *lab, int labK){
+    double shorteps, int *conv_iter, double *conv_eps, int *lab, int labK){
   int flag = 0;
   double like;
 
@@ -212,8 +216,9 @@ int ss_em_EM(double **x, int n, int p, int nclass, double *pi, double **Mu,
   }
   else {
     ss_shortems(n, p, nclass, pi, x, Mu, LTSigma, shortiter, shorteps,
-                lab, labK);
-    ss_emcluster(n, p, nclass, pi, x, Mu, LTSigma, 1000, 0.0001, &like, lab);
+                conv_iter, conv_eps, lab, labK);
+    ss_emcluster(n, p, nclass, pi, x, Mu, LTSigma, 1000, 0.0001, &like,
+                 conv_iter, conv_eps, lab);
     *llhdval = like;
   } 
   return flag;

@@ -17,7 +17,8 @@
 
 double determinant(double *LTSigma,int n);
 void emcluster(int n,int p,int k,double *pi,double **X,double **Mu, 
-	       double **LTSigma,int maxiter,double eps,double *llhdval);
+	       double **LTSigma,int maxiter,double eps,double *llhdval,
+	       int *conv_iter,double *conv_eps);
 int starts_via_svd(int n,int m,double **Mu,double **x,int nclus,int *ningrp,
                     double *pi,int *grpids,double **LTSigma,double alpha,
                     int llhdnotW);
@@ -28,7 +29,8 @@ void meandispersion(double **x, int n, int p, double *mu, double *ltsigma);
 */
 void meandispersion_MLE(double **x, int n, int p, double *mu, double *ltsigma);
 int emgroup(double **x,int n,int p,int nclass,double *pi,double **Mu,
-	     double **LTSigma,double *llhdval,int *nc,int *class)
+	     double **LTSigma,double *llhdval,int *nc,int *class,
+	     int *conv_iter,double *conv_eps)
 {
   int j,flag=0;
   double like=0.0;
@@ -49,7 +51,8 @@ int emgroup(double **x,int n,int p,int nclass,double *pi,double **Mu,
   else {
     if(!starts_via_svd(n,p,Mu,x,nclass,nc,pi,class,LTSigma,0.99,1))      {
       for(j=0;j<nclass;j++) pi[j]=nc[j]/(double)n;
-      emcluster(n,p,nclass,pi,x,Mu,LTSigma,1000,0.0001,&like);
+      emcluster(n,p,nclass,pi,x,Mu,LTSigma,1000,0.0001,&like,
+                conv_iter,conv_eps);
       assign(n,p,nclass,x,pi,Mu,LTSigma,class,nc);
     }
     else flag=1;

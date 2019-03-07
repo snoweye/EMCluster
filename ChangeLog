@@ -1,3 +1,6 @@
+2019-03-07: Ver. 0.2-11
+  * Move PROTECT and UNPROTCT to the caller function.
+
 2018-03-17: Ver. 0.2-11
   * Fix conv.iter and conv.eps for most C functions.
 

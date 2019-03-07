@@ -3,6 +3,9 @@
    using in Dr. Maitra's ten-clusters programs.
 
    Writen: Wei-Chen Chen on 2009/04/29.
+
+   Move PROTECT from the create_emptr().
+   Modified: Wei-Chen Chen on 2019/03/07.
 */
 
 #include "it_tool.h"
@@ -61,15 +64,16 @@ SEXP R_init_EM(SEXP R_X, SEXP R_n, SEXP R_p, SEXP R_nclass,
     SEXP R_short_iter, SEXP R_short_eps, SEXP R_fixed_iter, SEXP R_n_candidate,
     SEXP R_EM_iter, SEXP R_EM_eps, SEXP R_lab, SEXP R_labK,
     SEXP R_init_method){
-  int C_protect_length;
+  /* int C_protect_length; */
   EMPTR emptr = allocate_emptr();
   SEXP emobj;
 
   /* Initial emptr. */
-  emobj = create_emptr(R_X, R_n, R_p, R_nclass,
-                       R_short_iter, R_short_eps, R_fixed_iter, R_n_candidate,
-                       R_EM_iter, R_EM_eps, R_lab, R_labK,
-                       R_init_method, emptr);
+  PROTECT(emobj = create_emptr(R_X, R_n, R_p, R_nclass,
+                               R_short_iter, R_short_eps, R_fixed_iter,
+                               R_n_candidate,
+                               R_EM_iter, R_EM_eps, R_lab, R_labK,
+                               R_init_method, emptr));
 
   /* Compute. */
   init_EM(emptr->C_X, emptr->C_pi, emptr->C_Mu, emptr->C_LTSigma,
@@ -87,10 +91,11 @@ SEXP R_init_EM(SEXP R_X, SEXP R_n, SEXP R_p, SEXP R_nclass,
   free(emptr->C_X);
   free(emptr->C_Mu);
   free(emptr->C_LTSigma);
-  C_protect_length = emptr->C_protect_length;
+  /* C_protect_length = emptr->C_protect_length; */
   free(emptr);
 
-  UNPROTECT(C_protect_length);
+  /* UNPROTECT(C_protect_length); */
+  UNPROTECT(1);
   return(emobj);
 } /* End of R_init_EM(). */
 

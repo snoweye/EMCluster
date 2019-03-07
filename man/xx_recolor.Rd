@@ -37,7 +37,7 @@ recode(id)
   See Details.
 }
 \references{
-  \url{http://maitra.public.iastate.edu/}
+  \url{https://maitra.public.iastate.edu/}
 }
 \author{
   Ranjan Maitra.

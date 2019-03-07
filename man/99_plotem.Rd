@@ -32,7 +32,7 @@ plot2d(x, emobj = NULL, k = NULL, color.pch = 1,
   A plot is returned.
 }
 \references{
-  \url{http://maitra.public.iastate.edu/}
+  \url{https://maitra.public.iastate.edu/}
 }
 \author{
   Wei-Chen Chen \email{wccsnow@gmail.com} and Ranjan Maitra.

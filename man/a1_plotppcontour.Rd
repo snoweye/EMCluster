@@ -39,7 +39,7 @@ plotppcontour(da, Pi, Mu, S, class, class.true = NULL, n.grid = 128,
   Only distinguishable for up to 7 clusters due to the limited color schemes.
 }
 \references{
-  \url{http://maitra.public.iastate.edu/}
+  \url{https://maitra.public.iastate.edu/}
 }
 \author{
   Wei-Chen Chen \email{wccsnow@gmail.com} and Ranjan Maitra.

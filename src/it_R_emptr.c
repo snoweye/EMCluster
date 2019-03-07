@@ -43,7 +43,7 @@ SEXP create_emptr(SEXP R_X, SEXP R_n, SEXP R_p, SEXP R_nclass,
   char *names[8] = {"pi", "Mu", "LTSigma", "llhdval", "nc", "class",
                     "conv.iter", "conv.eps"};
 
-  emptr->C_protect_length = ret_length + 2;
+  /* emptr->C_protect_length = ret_length + 2; */
 
   /* Set initial values. */
   emptr->C_n = INTEGER(R_n);
@@ -51,17 +51,17 @@ SEXP create_emptr(SEXP R_X, SEXP R_n, SEXP R_p, SEXP R_nclass,
   emptr->C_nclass = INTEGER(R_nclass);
   p_LTSigma = *emptr->C_p * (*emptr->C_p + 1) / 2;
 
-  /* Allocate and protate storages. */
-  PROTECT(pi = allocVector(REALSXP, *emptr->C_nclass));
-  PROTECT(Mu = allocVector(REALSXP, *emptr->C_nclass * *emptr->C_p));
-  PROTECT(LTSigma = allocVector(REALSXP, *emptr->C_nclass * p_LTSigma));
-  PROTECT(llhdval = allocVector(REALSXP, 1));
-  PROTECT(nc = allocVector(INTSXP, *emptr->C_nclass));
-  PROTECT(class = allocVector(INTSXP, *emptr->C_n));
-  PROTECT(conv_iter = allocVector(INTSXP, 1));
-  PROTECT(conv_eps = allocVector(REALSXP, 1));
-  PROTECT(ret = allocVector(VECSXP, ret_length));
-  PROTECT(ret_names = allocVector(STRSXP, ret_length));
+  /* Allocate storages. Move PROTECT to the caller. */
+  pi = allocVector(REALSXP, *emptr->C_nclass);
+  Mu = allocVector(REALSXP, *emptr->C_nclass * *emptr->C_p);
+  LTSigma = allocVector(REALSXP, *emptr->C_nclass * p_LTSigma);
+  llhdval = allocVector(REALSXP, 1);
+  nc = allocVector(INTSXP, *emptr->C_nclass);
+  class = allocVector(INTSXP, *emptr->C_n);
+  conv_iter = allocVector(INTSXP, 1);
+  conv_eps = allocVector(REALSXP, 1);
+  ret = allocVector(VECSXP, ret_length);
+  ret_names = allocVector(STRSXP, ret_length);
 
   i = 0;
   SET_VECTOR_ELT(ret, i++, pi);

@@ -45,7 +45,7 @@
   advanced developers with caution.
 }
 \references{
-  \url{http://maitra.public.iastate.edu/}
+  \url{https://maitra.public.iastate.edu/}
 }
 \author{
   Wei-Chen Chen \email{wccsnow@gmail.com} and Ranjan Maitra.

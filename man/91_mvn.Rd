@@ -46,7 +46,7 @@ logL(x, emobj = NULL, pi = NULL, Mu = NULL, LTSigma = NULL)
   A density value is returned.
 }
 \references{
-  \url{http://maitra.public.iastate.edu/}
+  \url{https://maitra.public.iastate.edu/}
 }
 \author{
   Wei-Chen Chen \email{wccsnow@gmail.com} and Ranjan Maitra.

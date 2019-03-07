@@ -27,7 +27,7 @@ emgroup(x, nclass = 1, EMC = .EMC)
   \code{emret}.
 }
 \references{
-  \url{https://maitra.public.iastate.edu/}
+  \url{https://www.stat.iastate.edu/people/ranjan-maitra/}
 }
 \author{
   Wei-Chen Chen \email{wccsnow@gmail.com} and Ranjan Maitra.

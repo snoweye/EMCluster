@@ -33,7 +33,7 @@ myiris
   \code{myiris} is selected from the original Iris dataset given by R.
 }
 \references{
-  \url{https://maitra.public.iastate.edu/}
+  \url{https://www.stat.iastate.edu/people/ranjan-maitra/}
 }
 \author{
   Wei-Chen Chen \email{wccsnow@gmail.com} and Ranjan Maitra.

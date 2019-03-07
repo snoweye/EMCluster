@@ -41,7 +41,7 @@ em.icl.bic(x, emobj = NULL, pi = NULL, Mu = NULL, LTSigma = NULL)
   for given the data \code{x} and the desired model \code{emobj}.
 }
 \references{
-  \url{https://maitra.public.iastate.edu/}
+  \url{https://www.stat.iastate.edu/people/ranjan-maitra/}
 }
 \author{
   Wei-Chen Chen \email{wccsnow@gmail.com} and Ranjan Maitra

@@ -31,7 +31,7 @@ lmt(emobj.0, emobj.a, x, tau = 0.5, n.mc.E.delta = 1000,
   A list of class \code{lmt} are returned.
 }
 \references{
-  \url{https://maitra.public.iastate.edu/}
+  \url{https://www.stat.iastate.edu/people/ranjan-maitra/}
 }
 \author{
   Wei-Chen Chen \email{wccsnow@gmail.com} and Ranjan Maitra.

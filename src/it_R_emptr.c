@@ -43,7 +43,7 @@ SEXP create_emptr(SEXP R_X, SEXP R_n, SEXP R_p, SEXP R_nclass,
   char *names[8] = {"pi", "Mu", "LTSigma", "llhdval", "nc", "class",
                     "conv.iter", "conv.eps"};
 
-  emptr->C_protect_length = ret_length + 2;
+  /* emptr->C_protect_length = ret_length + 2; */
 
   /* Set initial values. */
   emptr->C_n = INTEGER(R_n);
@@ -113,7 +113,8 @@ SEXP create_emptr(SEXP R_X, SEXP R_n, SEXP R_p, SEXP R_nclass,
   emptr->C_labK = INTEGER(R_labK);
   emptr->C_init_method = INTEGER(R_init_method);
 
-  UNPROTECT(emptr->C_protect_length);
+  // UNPROTECT(emptr->C_protect_length);
+  UNPROTECT(10);
   return(ret);
 } /* End of create_emptr(). */
 

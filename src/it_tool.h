@@ -12,7 +12,7 @@ typedef struct emptr{
     double *C_short_eps, *C_EM_eps, *C_conv_eps;
     int *C_lab, *C_labK;
     int *C_init_method;
-    int C_protect_length;
+    /* int C_protect_length; */
 } *EMPTR;
 
 /* Functions in "it_R_emptr.c". */

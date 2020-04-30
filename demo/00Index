@@ -9,3 +9,4 @@ RRand		EMCluster	Test RRand().
 lmt             EMCluster       Test likelihood mixture test, lmt().
 ppcontour       EMCluster       Test for project.on.2d() and plotppcontour().
 logit		EMCluster	Test for logit of post z and mixing proportion.
+oversize_ss	EMCluster	Test oversize k for semi-supervised clustering.

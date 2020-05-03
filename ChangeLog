@@ -1,5 +1,7 @@
 2020-04-30: Ver. 0.2-13
   * Add a demo example that uses oversize k for semi-supervised clustering.
+  * Add a restriction to init.EM() where sufficient unlabeled data should be
+    checked for initializing oversize k.
 
 2019-03-20: Ver. 0.2-12
   * Push some PROTECT and UNPROTECT back within the call.

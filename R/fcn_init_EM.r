@@ -71,8 +71,12 @@ init.EM <- function(x, nclass = 1, lab = NULL, EMC = .EMC,
     init.code <- init.code + 100
     labK <- max(lab)
     lab <- lab - 1
-    if(length(unique(lab[lab != -1])) != labK) stop("lab is not correct.")
-    if(labK > nclass) stop("lab is not correct.")
+    if(length(unique(lab[lab != -1])) != labK) stop("lab is not correct (max and unique do not match).")
+    if(labK > nclass) stop("lab is not correct (nclass is too small).")
+    if(labK < nclass){
+      n.nolab <- sum(lab == -1)
+      if(n.nolab <= (nclass - labK)) stop("lab is not correct (not enough unlabeled data.")
+    }
   } else{
     labK <- NULL
   }

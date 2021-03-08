@@ -1,7 +1,7 @@
 # EMCluster
 
 * **License:** [![License](https://img.shields.io/badge/license-GPL%20v2-orange.svg?style=flat)](https://www.gnu.org/licenses/gpl-2.0.en.html)
-* **Download:** [![Download](https://cranlogs.r-pkg.org/badges/EMCluster)](httpss://cran.r-project.org/package=EMCluster)
+* **Download:** [![Download](https://cranlogs.r-pkg.org/badges/EMCluster)](https://cran.r-project.org/package=EMCluster)
 * **Author:** Wei-Chen Chen and Ranjan Maitra 
 
 

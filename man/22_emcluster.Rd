@@ -55,7 +55,7 @@ simple.init(x, nclass = 1)
   The \code{simple.init} utilizes \code{rand.EM} to obtain a simple initial.
 }
 \references{
-  \url{https://www.stat.iastate.edu/people/ranjan-maitra/}
+  \url{https://www.stat.iastate.edu/people/ranjan-maitra}
 }
 \author{
   Wei-Chen Chen \email{wccsnow@gmail.com} and Ranjan Maitra.

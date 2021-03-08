@@ -31,7 +31,7 @@
  *
  *  You should have received a copy of the GNU General Public License
  *  along with this program; if not, a copy is available at
- *  http://www.r-project.org/Licenses/
+ *  https://www.r-project.org/Licenses/
  */
 
 /* from NETLIB c/brent.shar with max.iter, add'l info and convergence

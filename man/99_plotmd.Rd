@@ -22,7 +22,7 @@ plotmd(x, class = NULL, xlab = "Variables", ylab = "Data", ...)
   A plot is returned.
 }
 \references{
-  \url{https://www.stat.iastate.edu/people/ranjan-maitra/}
+  \url{https://www.stat.iastate.edu/people/ranjan-maitra}
 }
 \author{
   Wei-Chen Chen \email{wccsnow@gmail.com} and Ranjan Maitra.
@@ -35,7 +35,7 @@ plotmd(x, class = NULL, xlab = "Variables", ylab = "Data", ...)
 library(EMCluster, quietly = TRUE)
 set.seed(1234)
 
-x <- myiris
+x <- as.matrix(iris[, 1:4], ncol = 4)
 ret <- em.EM(x, nclass = 5)
 plotmd(x, ret$class)
 }

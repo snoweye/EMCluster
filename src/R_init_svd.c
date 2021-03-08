@@ -63,6 +63,7 @@ SEXP R_starts_via_svd(SEXP R_x, SEXP R_n, SEXP R_p, SEXP R_nclass,
   /* Declare variables for calling C. */
   double **C_x, *C_pi, **C_Mu, **C_LTSigma, *C_alpha;
   int *C_n, *C_p, *C_nclass, *C_nc, *C_class, *C_method, *C_flag;
+  double *C_pi_iwv;
 
   /* Declare variables for R's returning. */
   SEXP pi, Mu, LTSigma, nc, class, flag, ret, ret_names;
@@ -129,8 +130,13 @@ SEXP R_starts_via_svd(SEXP R_x, SEXP R_n, SEXP R_p, SEXP R_nclass,
   C_flag = INTEGER(flag);
 
   /* Compute. */
+  C_pi_iwv = (double*) calloc(*C_nclass, sizeof(double));
   *C_flag = starts_via_svd(*C_n, *C_p, C_Mu, C_x, *C_nclass, C_nc,
-                           C_pi, C_class, C_LTSigma, *C_alpha, *C_method);
+                           C_pi_iwv, C_class, C_LTSigma, *C_alpha, *C_method);
+  for(i = 0; i < *C_nclass; i++){
+    C_pi[i] = C_pi_iwv[i];
+  }
+  free(C_pi_iwv);
 
   /* Free memory and release protectation. */
   free(C_x);

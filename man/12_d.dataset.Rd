@@ -2,7 +2,6 @@
 \alias{da1}
 \alias{da2}
 \alias{da3}
-\alias{myiris}
 \docType{data}
 \title{Dataset for demonstrations}
 \description{
@@ -12,11 +11,9 @@
 da1
 da2
 da3
-myiris
 }
 \format{
-  \code{da1}, \code{da2}, \code{da3} are in \code{list}, and
-  \code{myiris} is in \code{matrix}.
+  \code{da1}, \code{da2}, \code{da3} are in \code{list}.
 }
 \details{
   \code{da1} has 500 observations in two dimensions
@@ -29,11 +26,9 @@ myiris
 
   \code{da3} is similar to \code{da2}, but with lower overlaps between
   clusters.
-
-  \code{myiris} is selected from the original Iris dataset given by R.
 }
 \references{
-  \url{https://www.stat.iastate.edu/people/ranjan-maitra/}
+  \url{https://www.stat.iastate.edu/people/ranjan-maitra}
 }
 \author{
   Wei-Chen Chen \email{wccsnow@gmail.com} and Ranjan Maitra.

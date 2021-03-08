@@ -68,7 +68,7 @@ exhaust.EM(x, nclass = 1, lab = NULL,
   and \code{dmixmvn}.
 }
 \references{
-  \url{https://www.stat.iastate.edu/people/ranjan-maitra/}
+  \url{https://www.stat.iastate.edu/people/ranjan-maitra}
 }
 \author{
   Wei-Chen Chen \email{wccsnow@gmail.com} and Ranjan Maitra.

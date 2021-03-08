@@ -1,3 +1,7 @@
+2021-03-08: Ver. 0.2-13
+  * Add a calloc to "src/R_init_svd.c" to avoid errors detected by valgrind.
+  * Change http to https.
+
 2020-04-30: Ver. 0.2-13
   * Add a demo example that uses oversize k for semi-supervised clustering.
   * Add a restriction to init.EM() where sufficient unlabeled data should be

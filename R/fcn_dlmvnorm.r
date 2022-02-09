@@ -196,7 +196,7 @@ dlmvn <- function(x, mu, LTsigma, log = TRUE){
 ### mu: array[p].
 ### LTsigma: array[nclass, p * (p + 1) / 2].
   if(is.matrix(x) || is.data.frame(x)){
-    p <- nrow(x)
+    p <- ncol(x)
   } else if(is.vector(x)){
     p <- length(x)
   } else{
@@ -219,10 +219,10 @@ dlmvn <- function(x, mu, LTsigma, log = TRUE){
   }
 
   if(is.matrix(x) || is.data.frame(x)){
-    ret <- apply(x, 2, my.dlmvnorm)
+    ret <- apply(x, 1, my.dlmvnorm)
   }
   if(is.vector(x)){
-    ret <- my.dmixmvn(x) 
+    ret <- my.dlmvnorm(x) 
   }
   if(! log){
     ret <- exp(ret)

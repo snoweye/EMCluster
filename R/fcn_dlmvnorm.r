@@ -195,20 +195,35 @@ dlmvn <- function(x, mu, LTsigma, log = TRUE){
 ### x: data vector with length p.
 ### mu: array[p].
 ### LTsigma: array[nclass, p * (p + 1) / 2].
-  p <- length(x)
+  if(is.matrix(x) || is.data.frame(x)){
+    p <- nrow(x)
+  } else if(is.vector(x)){
+    p <- length(x)
+  } else{
+    stop("x should be a matrix or a vector.")
+  }
+
   p.LTsigma <- p * (p + 1) / 2
 
   if(length(mu) != p || length(LTsigma) != p.LTsigma){
     stop("Dimensions of x, mu or LTsigma do not agree!")
   }
 
-  ret <- .Call("R_dlmvnorm",
-               as.double(x),
-               as.integer(p),
-               as.integer(p.LTsigma),
-               as.double(mu),
-               as.double(LTsigma))
+  my.dlmvnorm <- function(x){
+    .Call("R_dlmvnorm",
+          as.double(x),
+          as.integer(p),
+          as.integer(p.LTsigma),
+          as.double(mu),
+          as.double(LTsigma))
+  }
 
+  if(is.matrix(x) || is.data.frame(x)){
+    ret <- apply(x, 2, my.dlmvnorm)
+  }
+  if(is.vector(x)){
+    ret <- my.dmixmvn(x) 
+  }
   if(! log){
     ret <- exp(ret)
   }

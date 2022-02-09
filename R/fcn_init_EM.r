@@ -79,6 +79,7 @@ init.EM <- function(x, nclass = 1, lab = NULL, EMC = .EMC,
     }
   } else{
     labK <- NULL
+    if(n <= nclass) stop("nclass is too large.")
   }
 
   if(! stable.solution) min.n.iter <- 0

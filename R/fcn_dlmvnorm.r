@@ -145,7 +145,7 @@ dmixmvn.wt <- function(x, emobj, log = FALSE){
 ###                  Mu (array[nclass, p]), and
 ###                  LTSigma (array[nclass, p * (p + 1) / 2]).
   if(is.matrix(x) || is.data.frame(x)){
-    p <- nrow(x)
+    p <- ncol(x)
   } else if(is.vector(x)){
     p <- length(x)
   } else{
@@ -167,7 +167,7 @@ dmixmvn.wt <- function(x, emobj, log = FALSE){
   }
 
   if(is.matrix(x) || is.data.frame(x)){
-    ret <- apply(x, 2, my.dmixmvn)
+    ret <- apply(x, 1, my.dmixmvn)
   }
   if(is.vector(x)){
     ret <- my.dmixmvn(x) 

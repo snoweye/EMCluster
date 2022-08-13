@@ -1,3 +1,8 @@
+2022-08-12: Ver. 0.2-14
+  * Use is() to replace class() inside if().
+  * Fix LaTeX symble in man for KaTeX conversion.
+  * Remove PPtree from enhance.
+
 2021-11-06: Ver. 0.2-14
   * Add e-mail.
 

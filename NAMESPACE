@@ -6,7 +6,7 @@ importFrom("graphics", "plot", "box", "axis", "rect", "image", "points",
                        "lines", "layout", "par", "polygon", "text", "legend",
                        "contour")
 
-import(MASS, Matrix)
+import(MASS, Matrix, methods)
 
 exportPattern("^[[:alpha:]]+")
 # exportPattern("^[\\.]")

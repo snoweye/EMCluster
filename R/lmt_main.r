@@ -2,7 +2,7 @@
 
 lmt <- function(emobj.0, emobj.a, x, tau = 0.5, n.mc.E.delta = 1000,
     n.mc.E.chi2 = 1000, verbose = FALSE){
-  if(class(emobj.0) != "emret" || class(emobj.a) != "emret"){
+  if((!is(emobj.0, "emret")) || !is(emobj.a, "emret")){
     stop("emobj.0 and emobj.a should be both in \"emret\" class.")
   }
   if(emobj.0$nclass == emobj.a$nclass){

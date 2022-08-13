@@ -7,7 +7,8 @@ project.on.2d <- function(x, emobj = NULL, pi = NULL, Mu = NULL,
   }
   var <- LTSigma2variance(emobj$LTSigma)
 
-  if(method[1] == "PP"){
+  .pkg.all <- .packages(all.available = TRUE)
+  if(method[1] == "PP" && "PPtree" %in% .pkg.all){
     ### Convert original S to spheric condition.
     x.pp <- x
     Sigma.pp <- var
@@ -23,9 +24,12 @@ project.on.2d <- function(x, emobj = NULL, pi = NULL, Mu = NULL,
     }
 
     ### Use PPtree to get a better view and a projection matrix.
-    tmp.pp <- PPtree::PP.optimize.random("LDA", 2, x.pp, emobj$class,
-                                         std = FALSE)
-    proj.mat <- tmp.pp$proj.best
+    .code.PPtree <- '
+      tmp.pp <- PPtree::PP.optimize.random("LDA", 2, x.pp, emobj$class,
+                                           std = FALSE)
+      proj.mat <- tmp.pp$proj.best
+    ' # End of .code.PPtree
+    invisible(eval(parse(text = .code.PPtree)))
   } else if(method[1] == "SVD"){
     ### Obtain a projection matrix based on the largest two components.
     x.svd <- svd(x)

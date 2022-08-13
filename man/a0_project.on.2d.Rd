@@ -36,7 +36,7 @@ project.on.2d(x, emobj = NULL, pi = NULL, Mu = NULL,
                     \code{emboj$LTSigma}.
     \item \code{class} is the original class id \code{emobj$class}.
     \item \code{proj.mat} is the projection matrix of dimension
-                          \eqn{p \time 2}{p * 2}.
+                          \eqn{p \times 2}{p * 2}.
   }
 }
 \references{

@@ -1,6 +1,6 @@
 Package: EMCluster
 Version: 0.2-14
-Date: 2021-11-06
+Date: 2022-08-12
 Title: EM Algorithm for Model-Based Clustering of Finite Mixture
         Gaussian Distribution
 Authors@R: c(person("Wei-Chen", "Chen", role = c("aut", "cre"), email =
@@ -12,8 +12,8 @@ Authors@R: c(person("Wei-Chen", "Chen", role = c("aut", "cre"), email =
         person("Rouben", "Rostamian", role = "ctb"),
         person("R Core team", role = "ctb", comment = "some functions are
                 modified from the R source code"))
-Depends: R (>= 4.0.0), MASS, Matrix
-Enhances: PPtree, RColorBrewer
+Depends: R (>= 4.0.0), MASS, Matrix, methods
+Enhances: RColorBrewer
 LazyLoad: yes
 LazyData: yes
 Description: EM algorithms and several efficient

@@ -75,7 +75,7 @@ wt2wot <- function(emobj.wt){
     ret$LTSigma <- t(ret$LTSigma)
   }
 
-  if(class(emobj.wt) == "emret.wt"){
+  if(is(emobj.wt, "emret.wt")){
     class(ret) <- "emret"
   } else{
     class(ret) <- "emret.wt"

@@ -1,7 +1,7 @@
 citHeader("To cite EMCluster in a publication use:")
 
 bibentry(
-  entry = "Misc",
+  bibtype = "Misc",
   title = "{EMCluster}: {EM} Algorithm for Model-Based Clustering of Finite Mixture Gaussian Distribution",
   author = c("Wei-Chen Chen",
              "Ranjan Maitra"),
@@ -12,7 +12,7 @@ bibentry(
 )
 
 bibentry(
-  entry = "Manual",
+  bibtype = "Manual",
   title = "A Quick Guid for the {EMCluster} Package  (Ver. 0.2-5)",
   author = c("Wei-Chen Chen",
              "Ranjan Maitra"),

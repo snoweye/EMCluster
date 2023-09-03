@@ -1,21 +1,21 @@
 citHeader("To cite EMCluster in a publication use:")
 
-citEntry(
+bibentry(
   entry = "Misc",
   title = "{EMCluster}: {EM} Algorithm for Model-Based Clustering of Finite Mixture Gaussian Distribution",
-  author = personList(as.person("Wei-Chen Chen"),
-                      as.person("Ranjan Maitra")),
+  author = c("Wei-Chen Chen",
+             "Ranjan Maitra"),
   year = "2015",
   note = "{R} Package, URL https://cran.r-project.org/package=EMCluster",
   textVersion = "Chen, W.-C., Maitra, R. (2015) EMCluster: EM Algorithm for Model-Based Clustering of Finite Mixture Gaussian Distribution. R Package, URL https://cran.r-project.org/package=EMCluster",
   key = "Chen2015EMClusterpackage"
 )
 
-citEntry(
+bibentry(
   entry = "Manual",
   title = "A Quick Guid for the {EMCluster} Package  (Ver. 0.2-5)",
-  author = personList(as.person("Wei-Chen Chen"),
-                      as.person("Ranjan Maitra")),
+  author = c("Wei-Chen Chen",
+             "Ranjan Maitra"),
   year = "2015",
   note = "{R} Vignette, URL https://cran.r-project.org/package=EMCluster",
   textVersion = "Chen, W.-C., Maitra, R. (2015) A Quick Guid for the EMCluster Package (Ver. 0.2-5). R Vignette, URL https://cran.r-project.org/package=EMCluster",

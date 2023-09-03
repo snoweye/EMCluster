@@ -1,5 +1,6 @@
 2023-09-03: Ver. 0.2-15
   * Remove the meta table from the doc.
+  * Modify CITATION.
 
 2022-08-12: Ver. 0.2-14
   * Use is() to replace class() inside if().

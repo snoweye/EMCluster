@@ -11,15 +11,6 @@
   in both of unsupervised and semi-supervised clustering.
 }
 \details{
-\tabular{ll}{
-  Package: \tab EMCluster\cr
-  Type: \tab Package\cr
-%  Version: \tab 0.1-2\cr
-%  Date: \tab 2010-02-18\cr
-  License: \tab GPL\cr
-  LazyLoad: \tab yes\cr
-}
-
   The install command is simply as \cr
   \cr
   \code{> R CMD INSTALL EMCluster_0.2-0.tar.gz } \cr

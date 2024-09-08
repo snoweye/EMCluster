@@ -22,7 +22,7 @@ void init_EM(double **X, double *pi, double **Mu, double **LTSigma,
     for(j = 0; j < n; j++) class[j] = 0;
     meandispersion_MLE(X, n, p, Mu[0], LTSigma[0]);
     *llhdval = -0.5 * n * p - 0.5 * n * log(determinant(LTSigma[0], p)) -
-               0.5 * n * p * log(2 * PI);
+               0.5 * n * p * log(2 * M_PI);
   } else {
 /* Unsupervised clustering. */
     if(init_method == 1){	/* em.EM */

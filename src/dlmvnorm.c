@@ -21,7 +21,7 @@ double dlmvnorm(double *x, int p, double *mu, double *LTsigma)
   exponent=-chisqstatlt(p,x,mu,LTsigma,&detsig);
   if (detsig>0) {
     exponent*=0.5;
-    exponent-=0.5*log(detsig)+0.5*p*log(2*PI);
+    exponent-=0.5*log(detsig)+0.5*p*log(2*M_PI);
   }
   return(exponent);
 }
@@ -65,7 +65,7 @@ double dlmvnorm_singular(double *x, int p, double *mu, double *LTsigma)
     FREE_VECTOR(y);
     for(i=0;i<dmin;i++) value-=0.5*z[i]*z[i]/eival[i];
     FREE_VECTOR(z);
-    value-=0.5*dmin*log(2*PI);
+    value-=0.5*dmin*log(2*M_PI);
   }
   FREE_VECTOR(eival);
   FREE_VECTOR(eivec);

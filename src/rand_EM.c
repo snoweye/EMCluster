@@ -78,7 +78,7 @@ int rand_EM(double **x, int n, int p, int nclass, double *pi, double **Mu,
   if(nclass == 1){
     meandispersion_MLE(x, n, p, Mu[0], LTSigma[0]);
     *llhdval = -0.5 * n * p - 0.5 * n * log(determinant(LTSigma[0], p)) -
-               0.5 * n * p * log(2 * PI);
+               0.5 * n * p * log(2 * M_PI);
   } else {
     mod_shortems(n, p, nclass, pi, x, Mu, LTSigma, shortiter, fixediter,
                  conv_iter, conv_eps);

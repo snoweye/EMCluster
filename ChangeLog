@@ -1,3 +1,6 @@
+2024-09-07: Ver. 0.2-16
+  * Use M_PI for PI which is removed in R C/C++ headers since R 4.5.0.
+
 2023-09-03: Ver. 0.2-15
   * Remove the meta table from the doc.
   * Modify CITATION.

@@ -46,7 +46,7 @@ int emgroup(double **x,int n,int p,int nclass,double *pi,double **Mu,
     meandispersion(x,n,p,Mu[0],LTSigma[0]);
 */
     meandispersion_MLE(x,n,p,Mu[0],LTSigma[0]);
-    like=-0.5*n*p-0.5*n*log(determinant(LTSigma[0],p))-0.5*n*p*log(2*PI);
+    like=-0.5*n*p-0.5*n*log(determinant(LTSigma[0],p))-0.5*n*p*log(2*M_PI);
   }
   else {
     if(!starts_via_svd(n,p,Mu,x,nclass,nc,pi,class,LTSigma,0.99,1))      {

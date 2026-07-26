@@ -78,7 +78,7 @@ init.EM <- function(x, nclass = 1, lab = NULL, EMC = .EMC,
       if(n.nolab <= (nclass - labK)) stop("lab is not correct (not enough unlabeled data.")
     }
   } else{
-    labK <- NULL
+    labK <- 0L
     if(n <= nclass) stop("nclass is too large.")
   }
 
